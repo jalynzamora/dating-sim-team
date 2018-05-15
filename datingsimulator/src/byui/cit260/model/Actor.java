@@ -10,5 +10,12 @@ package byui.cit260.model;
  * @author noahadams
  */
 public enum Actor {
-    oof
+    
+    private String name;
+    private String gender;
+
+
+
 }
+
+
