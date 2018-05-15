@@ -5,6 +5,8 @@
  */
 package datingsimulator;
 
+import byui.cit260.model.Player;
+
 /**
  *
  * @author jalynzamora
@@ -16,6 +18,14 @@ public class Datingsimulator {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-    }
     
+    
+    Player playerOne = new Player();
+    
+    playerOne.setName("Jesus");
+    
+    String playerOneName = playerOne.getName();
+    
+    System.out.println("Name = " + playerOneName);
+            }
 }

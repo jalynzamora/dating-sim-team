@@ -6,6 +6,7 @@
 package byui.cit260.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -15,6 +16,8 @@ import java.util.Objects;
 public class Player implements Serializable{
     
     private String name;
+    
+    private ArrayList<Game> games= new ArrayList<Game>();
 
     public Player() {
     }
@@ -27,6 +30,16 @@ public class Player implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
+
+    public ArrayList<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(ArrayList<Game> games) {
+        this.games = games;
+    }
+    
+    
 
     @Override
     public int hashCode() {
