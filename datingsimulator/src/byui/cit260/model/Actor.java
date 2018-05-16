@@ -41,5 +41,10 @@ public enum Actor implements Serializable {
     public Point getCoordinates() {
         return coordinates;
     }
+    
+    @Override
+    public String toString() {
+        return "Actor{" + "name=" + name + ", gender=" + gender + ", coordinates=" + coordinates + '}';
+    }
 
 }
