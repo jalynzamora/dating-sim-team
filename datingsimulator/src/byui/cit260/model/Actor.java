@@ -41,6 +41,11 @@ public enum Actor implements Serializable {
     public Point getCoordinates() {
         return coordinates;
     }
+    
+    @Override
+    public String toString() {
+        return "Actor{" + "name=" + name + ", gender=" + gender + ", coordinates=" + coordinates + '}';
+    }
 
     public void getSetName(Actor actor) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
