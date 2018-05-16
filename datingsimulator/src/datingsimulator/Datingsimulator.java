@@ -5,6 +5,8 @@
  */
 package datingsimulator;
 
+import byui.cit260.model.Actor;
+import static byui.cit260.model.Actor.Quavious;
 import byui.cit260.model.Game;
 import byui.cit260.model.Player;
 
@@ -22,20 +24,27 @@ public class Datingsimulator {
 
         Player playerOne = new Player();
 
-        playerOne.setName("Jesus");
+        playerOne.setName("Quavious");
 
         String playerOneName = playerOne.getName();
 
         System.out.println("Name = " + playerOneName);
-    }
+    
 
-    {
+    
+      
+        Game game = new Game();
+        game.setTotalDays(5);
+        game.setMoney(10);
+        game.setPlayer(playerOne);
+        
+        System.out.println(game.toString());
+    
+        
+        
+    
+    
+    
 
-        Game time = new Game();
-        time.setTotalDays(5);
-        Double timeTotalDays = time.getTotalDays();
-        System.out.println("totalDays= " + time);
-
-    }
-
+}
 }
