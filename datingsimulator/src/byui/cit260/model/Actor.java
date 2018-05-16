@@ -42,4 +42,8 @@ public enum Actor implements Serializable {
         return coordinates;
     }
 
+    public void getSetName(Actor actor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
