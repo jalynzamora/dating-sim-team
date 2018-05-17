@@ -40,6 +40,7 @@ public class Datingsimulator {
         
         System.out.println(game.toString());
     
+        System.out.println(Actor.Quavious.toString());
         
         
     
