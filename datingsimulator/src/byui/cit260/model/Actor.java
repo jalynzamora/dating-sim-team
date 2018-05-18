@@ -7,6 +7,7 @@ package byui.cit260.model;
 
 import java.awt.Point;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,15 +21,18 @@ public enum Actor implements Serializable {
     Velma("Velma", "Female", new Point(1, 0)),
     Cardi("Cardi", "Female", new Point(2, 0));
 
-    private String name;
-    private String gender;
-    private Point coordinates;
+    private final String name;
+    private  final String gender;
+    private final Point coordinates;
 
+    private final ArrayList<Relationship> relationships = new ArrayList<>();
+    
     Actor(String name, String gender, Point coordinates) {
         this.name = name;
         this.gender = gender;
         this.coordinates = coordinates;
     }
+    
 
     public String getName() {
         return name;
@@ -41,14 +45,15 @@ public enum Actor implements Serializable {
     public Point getCoordinates() {
         return coordinates;
     }
-    
+
+    public ArrayList<Relationship> getRelationships() {
+        return relationships;
+    }
+
     @Override
     public String toString() {
-        return "Actor{" + "name=" + name + ", gender=" + gender + ", coordinates=" + coordinates + '}';
+        return "Actor{" + "name=" + name + ", gender=" + gender + ", coordinates=" + coordinates + ", relationships=" + relationships + '}';
     }
-
-    public void getSetName(Actor actor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
+    
 }
