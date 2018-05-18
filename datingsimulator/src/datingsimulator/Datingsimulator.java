@@ -8,6 +8,7 @@ package datingsimulator;
 import byui.cit260.model.Actor;
 import static byui.cit260.model.Actor.Quavious;
 import byui.cit260.model.Game;
+import byui.cit260.model.InventoryItem;
 import byui.cit260.model.Location;
 import byui.cit260.model.Player;
 import byui.cit260.model.Question;
@@ -32,11 +33,25 @@ public class Datingsimulator {
         String playerOneName = playerOne.getName();
 
         System.out.println("Name = " + playerOneName);
-
+   
+      
         Game game = new Game();
         game.setTotalDays(5);
         game.setMoney(10);
         game.setPlayer(playerOne);
+        
+        System.out.println(game.toString());
+    
+        System.out.println(Actor.Quavious.toString());
+        
+        
+        InventoryItem itemOne = new InventoryItem();
+        
+        
+        
+    
+    
+    
 
         System.out.println(game.toString());
 

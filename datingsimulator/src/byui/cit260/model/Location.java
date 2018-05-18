@@ -19,7 +19,7 @@ public class Location implements Serializable {
     private double column;
     private double displaySymbol;
     private String description;
-    private Point visited;
+    private boolean visited;
 
     public Location() {
     }
@@ -56,11 +56,11 @@ public class Location implements Serializable {
         this.description = description;
     }
 
-    public Point getVisited() {
+    public boolean isVisited() {
         return visited;
     }
 
-    public void setVisited(Point visited) {
+    public void setVisited(boolean visited) {
         this.visited = visited;
     }
 

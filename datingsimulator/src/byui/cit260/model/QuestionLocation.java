@@ -14,28 +14,30 @@ import java.util.Objects;
  */
 public class QuestionLocation extends Location {
 
-    private String requiredCorrect;
-    private String noCorrect;
+    private boolean requiredCorrect;
+    private boolean noCorrect;
     private String type;
 
     public QuestionLocation() {
     }
 
-    public String getRequiredCorrect() {
+    public boolean isRequiredCorrect() {
         return requiredCorrect;
     }
 
-    public void setRequiredCorrect(String requiredCorrect) {
+    public void setRequiredCorrect(boolean requiredCorrect) {
         this.requiredCorrect = requiredCorrect;
     }
 
-    public String getNoCorrect() {
+    public boolean isNoCorrect() {
         return noCorrect;
     }
 
-    public void setNoCorrect(String noCorrect) {
+    public void setNoCorrect(boolean noCorrect) {
         this.noCorrect = noCorrect;
     }
+
+    
 
     public String getType() {
         return type;
