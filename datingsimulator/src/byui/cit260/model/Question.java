@@ -16,7 +16,7 @@ public class Question implements Serializable {
 
     private String question;
     private String answer;
-    private String required;
+    private boolean required;
     private double numPoints;
 
     public Question() {
@@ -38,13 +38,15 @@ public class Question implements Serializable {
         this.answer = answer;
     }
 
-    public String getRequired() {
+    public boolean isRequired() {
         return required;
     }
 
-    public void setRequired(String required) {
+    public void setRequired(boolean required) {
         this.required = required;
     }
+
+    
 
     public double getNumPoints() {
         return numPoints;

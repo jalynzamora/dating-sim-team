@@ -10,8 +10,11 @@ import static byui.cit260.model.Actor.Quavious;
 import static byui.cit260.model.Actor.Velma;
 import byui.cit260.model.Game;
 import byui.cit260.model.InventoryItem;
+import byui.cit260.model.Location;
 import byui.cit260.model.Map;
 import byui.cit260.model.Player;
+import byui.cit260.model.Question;
+import byui.cit260.model.QuestionLocation;
 import byui.cit260.model.Relationship;
 
 /**
@@ -72,5 +75,32 @@ public class Datingsimulator {
         
         System.out.println(relationships.toString());
 
-}
+        System.out.println(game.toString());
+
+        System.out.println(Actor.Quavious.toString());
+
+        Location location = new Location();
+        location.setRow(5);
+        location.setColumn(5);
+        location.setDisplaySymbol(3);
+        location.setDescription("The park with big trees");
+        location.setVisited(true);
+
+        System.out.println(location.toString());
+
+        QuestionLocation questionLocation = new QuestionLocation();
+        questionLocation.setRequiredCorrect(true);
+        questionLocation.setNoCorrect(false);
+        questionLocation.setType("Gym");
+
+        System.out.println(questionLocation.toString());
+
+        Question question = new Question();
+        question.setQuestion(" What are you doing tonight?");
+        question.setAnswer(" Not much, what about you?");
+        question.setRequired(true);
+        question.setNumPoints(42);
+
+        System.out.println(question.toString());
+    }
 }
