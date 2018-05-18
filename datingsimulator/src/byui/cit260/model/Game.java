@@ -6,6 +6,7 @@
 package byui.cit260.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -17,6 +18,7 @@ public class Game implements Serializable {
     private double totalDays;
     private double money;
     private Player player;
+    private ArrayList<InventoryItem> inventoryItems = new ArrayList<>();
     
     public Game() {
     }
@@ -45,22 +47,30 @@ public class Game implements Serializable {
         this.player = player;
     }
 
+    public ArrayList<InventoryItem> getInventoryItems() {
+        return inventoryItems;
+    }
+
+    public void setInventoryItems(ArrayList<InventoryItem> inventoryItems) {
+        this.inventoryItems = inventoryItems;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 17 * hash + (int) (Double.doubleToLongBits(this.totalDays) ^ (Double.doubleToLongBits(this.totalDays) >>> 32));
         hash = 17 * hash + (int) (Double.doubleToLongBits(this.money) ^ (Double.doubleToLongBits(this.money) >>> 32));
         hash = 17 * hash + Objects.hashCode(this.player);
+        hash = 17 * hash + Objects.hashCode(this.inventoryItems);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Game{" + "totalDays=" + totalDays + ", money=" + money + ", player=" + player + '}';
+        return "Game{" + "totalDays=" + totalDays + ", money=" + money + ", player=" + player + ", inventoryItems=" + inventoryItems + '}';
     }
+   
 
-    
-    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -82,14 +92,10 @@ public class Game implements Serializable {
         if (!Objects.equals(this.player, other.player)) {
             return false;
         }
+        if (!Objects.equals(this.inventoryItems, other.inventoryItems)) {
+            return false;
+        }
         return true;
     }
-
-    public Double setTotalDays() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
-  
     
 }

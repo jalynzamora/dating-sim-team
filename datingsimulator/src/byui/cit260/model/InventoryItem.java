@@ -17,6 +17,7 @@ public class InventoryItem implements Serializable{
     private String itemType;
     private String description;
     private double quantity;
+    private Game game;
     
     public InventoryItem() {
     }
@@ -45,21 +46,29 @@ public class InventoryItem implements Serializable{
         this.quantity = quantity;
     }
 
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 47 * hash + Objects.hashCode(this.itemType);
         hash = 47 * hash + Objects.hashCode(this.description);
         hash = 47 * hash + (int) (Double.doubleToLongBits(this.quantity) ^ (Double.doubleToLongBits(this.quantity) >>> 32));
+        hash = 47 * hash + Objects.hashCode(this.game);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "InventoryItem{" + "itemType=" + itemType + ", description=" + description + ", quantity=" + quantity + '}';
+        return "InventoryItem{" + "itemType=" + itemType + ", description=" + description + ", quantity=" + quantity + ", game=" + game + '}';
     }
     
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -81,8 +90,10 @@ public class InventoryItem implements Serializable{
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
+        if (!Objects.equals(this.game, other.game)) {
+            return false;
+        }
         return true;
     }
-
     
 }
