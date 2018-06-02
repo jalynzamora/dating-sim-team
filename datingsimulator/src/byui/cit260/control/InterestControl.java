@@ -21,9 +21,11 @@ public class InterestControl {
         if (years < 3 || years > 10) {
             return -3;
         }
-        double Interest = borrowed * (1 + interestRate * years);
-
-        return Interest;
+        
+        double interest = (borrowed * interestRate) * years;
+        
+        
+        return interest;
 
     }
 }
