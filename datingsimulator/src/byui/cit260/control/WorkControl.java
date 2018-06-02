@@ -11,14 +11,14 @@ package byui.cit260.control;
  */
 public class WorkControl {
 
-    public static double calcTotalMoney(double moneyEarned, double bonus) {
+    public static double calcTotalMoney(long moneyEarned, double bonus) {
         if (moneyEarned < 50 || moneyEarned > 300) {
             return -1;
         }
         if (bonus < 0.03 || bonus > 0.06) {
             return -2;
         }
-        double totalMoney = (moneyEarned+bonus) -0.18*(moneyEarned+bonus);
+        double totalMoney = (moneyEarned+bonus)-0.18*(moneyEarned+bonus);
 
 return totalMoney;
     }

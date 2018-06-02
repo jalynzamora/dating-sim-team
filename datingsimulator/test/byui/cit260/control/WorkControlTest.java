@@ -23,12 +23,14 @@ public class WorkControlTest {
     @Test
     public void testCalcTotalMoney() {
         System.out.println("calcTotalMoney");
-        double moneyEarned = 0.0;
-        double bonus = 0.0;
-        double expResult = 0.0;
+        
+        System.out.println("\tTest case 1");
+        
+        long moneyEarned = 100;
+        double bonus = 0.04;
+        double expResult = 82.0328;
         double result = WorkControl.calcTotalMoney(moneyEarned, bonus);
-//        assertEquals(expResult, result, 0.0);
-        return;
+        assertEquals(expResult, result, 0.0);
     }
 
 }
