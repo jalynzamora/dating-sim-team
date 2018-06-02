@@ -102,5 +102,6 @@ public class Datingsimulator {
         question.setNumPoints(42);
 
         System.out.println(question.toString());
+        return;
     }
 }
