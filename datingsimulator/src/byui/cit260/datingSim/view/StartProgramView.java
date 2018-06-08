@@ -33,7 +33,12 @@ public class StartProgramView {
     }
 
     private String[] getInputs() {
+       System.out.println("--getInputs() called--");
        
+       String[] inputs = new String[1];
+       inputs[0] = "testInput";
+       
+       return inputs;
     }
     
 }
