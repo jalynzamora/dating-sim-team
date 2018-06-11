@@ -12,7 +12,26 @@ package byui.cit260.datingSim.view;
 class MainMenuView {
 
     void displayMainMenuView() {
-    System.out.println("**** displayMainMenuView() called ****");
+         boolean endOfView = false;
+        do {
+            String[] inputs = getInputs();
+            if (inputs[0].length() < 1 || inputs[0].equals("Q")) {
+                return;
+            }
+            endOfView = doAction(inputs);
+
+        } while (endOfView != true);
+
     }
-    
-}
+
+    private boolean getInputs() {
+      System.out.println("*** MainMenuview - getInputs() called ***");
+      boolean Strs = true;
+      return Strs;
+    }
+
+    private boolean doAction(String[] inputs) {
+        System.out.println("**** MainMenuView - doAction() called ***");
+                return true;
+    }
+    }
