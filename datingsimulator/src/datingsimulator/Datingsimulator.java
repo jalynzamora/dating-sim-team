@@ -23,5 +23,6 @@ public class Datingsimulator {
         // TODO code application logic here
     StartProgramView startProgramView = new StartProgramView();
     startProgramView.displayStartProgramView();
+ 
     }
 }
