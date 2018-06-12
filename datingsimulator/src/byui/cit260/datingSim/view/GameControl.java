@@ -6,6 +6,7 @@
 package byui.cit260.datingSim.view;
 
 import byui.cit260.model.Player;
+import datingsimulator.Datingsimulator;
 
 /**
  *
@@ -14,8 +15,12 @@ import byui.cit260.model.Player;
 class GameControl {
 
     static Player savePlayer(String playerName) {
-        System.out.println("**** savePlayer() called ***");
-        return new Player();
+        if(playerName == null || playerName.length() < 1) {
+            return null;
+        }
+        Player player = new Player();
+        player.setName(playerName);
+        Datingsimulator.setPlayer(player);
+        return player;
     }
-    
 }
