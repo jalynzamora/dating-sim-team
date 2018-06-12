@@ -20,7 +20,7 @@ public class StartProgramView {
         boolean endOfView = false;
         do {
             String[] inputs = getInputs();
-            if (inputs[0].length() < 1 || inputs[0].equals("Q")) {
+            if (inputs[0].length() < 1 || inputs[0].toUpperCase().equals("Q")) {
                 return;
             }
             endOfView = doAction(inputs);
