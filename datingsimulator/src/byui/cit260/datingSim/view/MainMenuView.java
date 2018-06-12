@@ -5,6 +5,7 @@
  */
 package byui.cit260.datingSim.view;
 
+import datingsimulator.Datingsimulator;
 import java.util.Scanner;
 
 /**
@@ -13,25 +14,21 @@ import java.util.Scanner;
  */
 class MainMenuView {
 
-   public void displayMainMenuView() {
-         boolean endOfView = false;
+    public void displayMainMenuView() {
+        boolean endOfView = false;
         do {
             String[] inputs = getInputs();
-            if (inputs[0].length() < 1 || inputs[0].equals("Q")) {
-                return;
-            }
+            
+            
             endOfView = doAction(inputs);
 
         } while (endOfView != true);
     }
 
     private String[] getInputs() {
-      String[] inputs = new String[1];
-        System.out.println("N - New game");
-        System.out.println("R - Restart game");
-        System.out.println("H - Get help");
-        System.out.println("Q - Quit");
-  
+        String[] inputs = new String[1];
+        System.out.println("N - New game\n" + "R - Restart game\n" + "H - Get help\n" + "Q - Quit");
+
         boolean valid = false;
         while (valid == false) {
             System.out.println("Enter the selected menu item.");
@@ -50,29 +47,38 @@ class MainMenuView {
     private boolean doAction(String[] inputs) {
         String menuItem = inputs[0];
         menuItem = menuItem.toUpperCase();
-        switch (menuItem){
-            case "N": this.startNewGame();
-            break;
-            case "R": this.restartGame();
-            break;
-            case "H": this.getHelp();
-            break;
-            case "Q": return true;
+        switch (menuItem) {
+            case "N":
+                this.startNewGame();
+                break;
+            case "R":
+                this.restartGame();
+                break;
+            case "H":
+                this.getHelp();
+                break;
+            case "Q":
+                return true;
             default:
-                System.out.println("Invaild menu item.");   
+                System.out.println("Invaild menu item.");
         }
         return false;
     }
 
     private void startNewGame() {
-        
+        GameControl.createNewGame(Datingsimulator.getPlayer());
+        GameMenuView gameMenuView = new GameMenuView();
+        gameMenuView.displayGameMenuView();
     }
 
     private void getHelp() {
-       
+        HelpMenuView helpMenuView = new HelpMenuView();
+        helpMenuView.displayHelpMenuView();
+
     }
 
     private void restartGame() {
-       
+        StartExistingGameView startExistingGameView = new StartExistingGameView();
+        startExistingGameView.displayStartExistingGameView();
     }
-    }
+}

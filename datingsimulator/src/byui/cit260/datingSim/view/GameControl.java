@@ -15,12 +15,16 @@ import datingsimulator.Datingsimulator;
 class GameControl {
 
     static Player savePlayer(String playerName) {
-        if(playerName == null || playerName.length() < 1) {
+        if (playerName == null || playerName.length() < 1) {
             return null;
         }
         Player player = new Player();
         player.setName(playerName);
         Datingsimulator.setPlayer(player);
         return player;
+    }
+
+    public static void createNewGame(Player player) {
+        System.out.println("createNewGame was called");
     }
 }
