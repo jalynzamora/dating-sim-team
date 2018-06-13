@@ -5,21 +5,20 @@
  */
 package byui.cit260.datingSim.view;
 
-import datingsimulator.Datingsimulator;
 import java.util.Scanner;
 
 /**
  *
  * @author noahadams
  */
-class MainMenuView {
-
-    public void displayMainMenuView() {
+public class DateMenuView {
+    public void displayDateMenuView() {
         boolean endOfView = false;
         do {
             String[] inputs = getInputs();
-            
-            
+            if (inputs[0].length() < 1 || inputs[0].equals("Q")) {
+                return;
+            }
             endOfView = doAction(inputs);
 
         } while (endOfView != true);
@@ -27,7 +26,13 @@ class MainMenuView {
 
     private String[] getInputs() {
         String[] inputs = new String[1];
-        System.out.println("N - New game\n" + "R - Restart game\n" + "H - Get help\n" + "Q - Quit\n" + "D - Places and cost of a date");
+        System.out.println("A - AppleBees $30");
+        System.out.println("C - CupBop Korean BBQ $20");
+        System.out.println("F - Freddy's Steak Burgers $20");
+        System.out.println("T - Taco Bell $10");
+        System.out.println("M - McDonald's $15");
+        System.out.println("D - Domino's $15");
+        System.out.println("Q - Quit");
 
         boolean valid = false;
         while (valid == false) {
@@ -42,49 +47,33 @@ class MainMenuView {
             valid = true;
         }
         return inputs;
-    }
+}
 
     private boolean doAction(String[] inputs) {
+        private boolean doAction(String[] inputs) {
         String menuItem = inputs[0];
         menuItem = menuItem.toUpperCase();
         switch (menuItem) {
-            case "N":
-                this.startNewGame();
+            case "G":
+                this.goalOfGame();
                 break;
-            case "R":
-                this.restartGame();
+            case "M":
+                this.move();
                 break;
-            case "H":
-                this.getHelp();
+            case "C":
+                this.initiateConversation();
                 break;
             case "D":
-                this.getDate();
+                this.date();
+                break;
+            case "E":
+                this.earnMoney();
+                break;
             case "Q":
                 return true;
             default:
-                System.out.println("Invaild menu item.");
+                System.out.println("Invaild help menu item.");
         }
         return false;
-    }
-
-    private void startNewGame() {
-        GameControl.createNewGame(Datingsimulator.getPlayer());
-        GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.displayGameMenuView();
-    }
-
-    private void getHelp() {
-        HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayHelpMenuView();
 
     }
-
-    private void restartGame() {
-        StartExistingGameView startExistingGameView = new StartExistingGameView();
-        startExistingGameView.displayStartExistingGameView();
-    }
-
-    private void getDate() {
-        
-    }
-}
