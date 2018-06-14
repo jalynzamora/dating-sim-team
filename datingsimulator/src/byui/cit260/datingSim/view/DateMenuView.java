@@ -50,24 +50,26 @@ public class DateMenuView {
 }
 
     private boolean doAction(String[] inputs) {
-        private boolean doAction(String[] inputs) {
         String menuItem = inputs[0];
         menuItem = menuItem.toUpperCase();
         switch (menuItem) {
-            case "G":
-                this.goalOfGame();
-                break;
-            case "M":
-                this.move();
+            case "A":
+                this.appleBees();
                 break;
             case "C":
-                this.initiateConversation();
+                this.cupBop();
+                break;
+            case "F":
+                this.Freddys();
+                break;
+            case "T":
+                this.tacoBell();
+                break;
+            case "M":
+                this.mcDonalds();
                 break;
             case "D":
-                this.date();
-                break;
-            case "E":
-                this.earnMoney();
+                this.dominos();
                 break;
             case "Q":
                 return true;
@@ -77,3 +79,28 @@ public class DateMenuView {
         return false;
 
     }
+
+    private void appleBees() {
+        System.out.println("You just went on a date to AppleBee's, it cost $30.");
+    }
+
+    private void cupBop() {
+        System.out.println("You just went on a date to CupBop Korean BBQ, it cost $20.");
+    }
+
+    private void Freddys() {
+        System.out.println("You just went on a date to Freddy's Steak Burgers, it cost $20.");
+    }
+
+    private void tacoBell() {
+        System.out.println("You just went on a date to Taco Bell, it cost $10.");
+    }
+
+    private void mcDonalds() {
+        System.out.println("You just went on a date to McDonald's, it cost $15.");
+    }
+
+    private void dominos() {
+        System.out.println("You just went on a date to Domino's Pizza, it cost $15.");
+    }
+}
