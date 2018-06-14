@@ -85,6 +85,7 @@ class MainMenuView {
     }
 
     private void getDate() {
-        
+        DateMenuView dateMenuView = new DateMenuView();
+        dateMenuView.displayDateMenuView();
     }
 }
