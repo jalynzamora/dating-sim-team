@@ -29,8 +29,8 @@ class GameMenuView {
     private String[] getInputs() {
         String[] inputs = new String[1];
         System.out.println("**************************");
-        System.out.println("M - Map\n" + "P - Where am I\n" + "T - Socialize\n" + "A - Ask out on date\n"
-                + "R - View relationship status\n" + "I - View inventory\n" + "S - Save\n" + "W - Work\n" + "Q - Go back to main menu");
+        System.out.println("M - Map\n" + "T - Socialize\n" + "A - Ask out on date\n"
+                + "R - View relationship status\n" + "I - View inventory\n" + "W - Work\n" + "S - Save\n" + "Q - Go back to main menu");
         System.out.println("**************************");
         boolean valid = false;
         while (valid == false) {
@@ -48,7 +48,69 @@ class GameMenuView {
     }
 
     private boolean doAction(String[] inputs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String menuItem = inputs[0];
+        menuItem = menuItem.toUpperCase();
+        switch (menuItem) {
+            case "M":
+                this.openMap();
+                break;
+            case "T":
+                this.openSocialize();
+                break;
+            case "A":
+                this.openDate();
+                break;
+            case "R":
+                this.viewStatus();
+            case "I":
+                this.viewInventory();
+                break;
+            case "W":
+                this.openWork();
+                break;
+            case "S":
+                this.saveGame();
+                break;
+            case "Q":
+                return true;
+            default:
+                System.out.println("Invaild menu item.");
+        }
+        return false;
+    }
+
+    private void openMap() {
+
+    }
+
+    private void openSocialize() {
+
+    }
+
+    private void viewStatus() {
+
+    }
+
+    private void openDate() {
+
+    }
+
+    private void viewInventory() {
+
+    }
+
+    private void openWork() {
+        System.out.println("**************************");
+        System.out.println("Welcome to walmart, let's start working!\n"
+                + "Enter data to calculate the total money earned.");
+        System.out.println("**************************");
+        
+        DoWorkView doWorkView = new DoWorkView();
+        doWorkView.displayDoWorkView();
+    }
+
+    private void saveGame() {
+
     }
 
 }
