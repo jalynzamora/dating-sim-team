@@ -30,7 +30,7 @@ class GameMenuView {
         String[] inputs = new String[1];
         System.out.println("**************************");
         System.out.println("M - Map\n" + "T - Socialize\n" + "A - Ask out on date\n"
-                + "R - View relationship status\n" + "I - View inventory\n" + "W - Work\n" +"C - Calculate Interest\n" + "S - Save\n" + "Q - Go back to main menu");
+                + "R - View relationship status\n" + "I - View inventory\n" + "W - Work\n" +"C - Calculate Interest\n" + "D - Dates Locations\n" + "S - Save\n" + "Q - Go back to main menu");
         System.out.println("**************************");
         boolean valid = false;
         while (valid == false) {
@@ -70,6 +70,9 @@ class GameMenuView {
                 break;
             case "C":
                 this.openInterest();
+                break;
+            case "D":
+                this.openDateLocation();
                 break;
             case "S":
                 this.saveGame();
@@ -119,6 +122,11 @@ class GameMenuView {
 
     private void saveGame() {
 
+    }
+
+    private void openDateLocation() {
+        DateMenuView dateMenuView = new DateMenuView();
+        dateMenuView.displayDateMenuView();
     }
 
 }

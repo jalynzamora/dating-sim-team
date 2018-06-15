@@ -27,7 +27,7 @@ class MainMenuView {
 
     private String[] getInputs() {
         String[] inputs = new String[1];
-        System.out.println("N - New game\n" + "R - Restart game\n" + "H - Get help\n" + "Q - Quit\n" + "D - Places and cost of a date");
+        System.out.println("N - New game\n" + "R - Restart game\n" + "H - Get help\n" + "Q - Quit");
 
         boolean valid = false;
         while (valid == false) {
@@ -57,8 +57,6 @@ class MainMenuView {
             case "H":
                 this.getHelp();
                 break;
-            case "D":
-                this.getDate();
             case "Q":
                 return true;
             default:
@@ -82,10 +80,5 @@ class MainMenuView {
     private void restartGame() {
         StartExistingGameView startExistingGameView = new StartExistingGameView();
         startExistingGameView.displayStartExistingGameView();
-    }
-
-    private void getDate() {
-        DateMenuView dateMenuView = new DateMenuView();
-        dateMenuView.displayDateMenuView();
     }
 }
