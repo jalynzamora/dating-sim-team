@@ -11,7 +11,7 @@ package byui.cit260.control;
  */
 public class WorkControl {
 
-    public static double calcTotalMoney(long moneyEarned, double bonus) {
+    public static double calcTotalMoney(double moneyEarned, double bonus) {
         if (moneyEarned < 50 || moneyEarned > 300) {
             return -1;
         }
