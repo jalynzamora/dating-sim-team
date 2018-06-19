@@ -12,41 +12,23 @@ import java.util.Scanner;
  *
  * @author noahadams
  */
-public class StartProgramView {
+public class StartProgramView extends View {
     public StartProgramView() {
     }
 
-    public void displayStartProgramView() {
-        boolean endOfView = false;
-        do {
-            String[] inputs = getInputs();
-            if (inputs[0].length() < 1 || inputs[0].toUpperCase().equals("Q")) {
-                return;
-            }
-            endOfView = doAction(inputs);
-
-        } while (endOfView != true);
-
-    }
-
-    private String[] getInputs() {
+    
+    
+@Override
+    public String[] getInputs() {
         String[] inputs = new String[1];
-        System.out.println("Enter player's name below:");
-        boolean valid = false;
-        while (valid == false) {
-            Scanner inFile = new Scanner(System.in);
-            inputs[0] = inFile.nextLine();
-
-            if (inputs[0].length() < 1) {
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-            valid = true;
-        }
+        String name = this.getInput("Enter your name");
+        inputs[0] = name;
+        
+        
         return inputs;
     }
-    
-    private boolean doAction(String[] inputs) {
+    @Override
+    public boolean doAction(String[] inputs) {
        String playerName = inputs[0];
        Player player = GameControl.savePlayer(playerName);
        if (player == null){
