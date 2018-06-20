@@ -21,7 +21,7 @@ public class StartProgramView extends View {
 @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
-        String name = this.getInput("Enter your name");
+        String name = this.getInput("Enter your name:");
         inputs[0] = name;
         
         
@@ -41,7 +41,7 @@ public class StartProgramView extends View {
        System.out.println("===================================");
        
        MainMenuView mainMenuView = new MainMenuView();
-       mainMenuView.displayMainMenuView();
+       mainMenuView.display();
         return true;
     }        
 

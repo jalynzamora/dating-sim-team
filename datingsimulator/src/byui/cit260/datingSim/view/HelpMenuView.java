@@ -11,45 +11,23 @@ import java.util.Scanner;
  *
  * @author noahadams
  */
-class HelpMenuView {
+public class HelpMenuView extends View {
 
-    public void displayHelpMenuView() {
-        boolean endOfView = false;
-        do {
-            String[] inputs = getInputs();
-            if (inputs[0].length() < 1 || inputs[0].equals("Q")) {
-                return;
-            }
-            endOfView = doAction(inputs);
-
-        } while (endOfView != true);
+    public HelpMenuView() {
     }
 
-    private String[] getInputs() {
+    
+@Override
+    public String[] getInputs() {
         String[] inputs = new String[1];
-        System.out.println("G - What is the goal of the game?");
-        System.out.println("M - How to Move?");
-        System.out.println("C - How to initiate conversation with someone?");
-        System.out.println("D - How to go on a date?");
-        System.out.println("E - How to earn money?");
-        System.out.println("Q - Quit");
-
-        boolean valid = false;
-        while (valid == false) {
-            System.out.println("Enter the selected menu item.");
-            Scanner inFile = new Scanner(System.in);
-            inputs[0] = inFile.nextLine();
-
-            if (inputs[0].length() < 1) {
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-            valid = true;
-        }
+        String help = this.getInput("G - What is the goal of the game?\n" + "M - How to Move?\n" + "C - How to initiate conversation with someone?\n" 
+       + "D - How to go on a date?\n" + "E - How to earn money?\n" + "Q - Quit");
+        inputs[0] = help;
         return inputs;
     }
 
-    private boolean doAction(String[] inputs) {
+    @Override
+    public boolean doAction(String[] inputs) {
         String menuItem = inputs[0];
         menuItem = menuItem.toUpperCase();
         switch (menuItem) {

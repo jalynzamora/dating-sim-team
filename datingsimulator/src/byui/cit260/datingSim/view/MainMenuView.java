@@ -12,39 +12,23 @@ import java.util.Scanner;
  *
  * @author noahadams
  */
-class MainMenuView {
-
-    public void displayMainMenuView() {
-        boolean endOfView = false;
-        do {
-            String[] inputs = getInputs();
-            
-            
-            endOfView = doAction(inputs);
-
-        } while (endOfView != true);
+public class MainMenuView extends View {
+    public MainMenuView() {
     }
 
-    private String[] getInputs() {
+    
+        
+        
+@Override
+    public String[] getInputs() {
         String[] inputs = new String[1];
-        System.out.println("N - New game\n" + "R - Restart game\n" + "H - Get help\n" + "Q - Quit");
-
-        boolean valid = false;
-        while (valid == false) {
-            System.out.println("Enter the selected menu item.");
-            Scanner inFile = new Scanner(System.in);
-            inputs[0] = inFile.nextLine();
-
-            if (inputs[0].length() < 1) {
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-            valid = true;
-        }
+        String menu = this.getInput("N - New game\n" + "R - Restart game\n" + "H - Get help\n" + "Q - Quit");
+        inputs[0] = menu;
+        
         return inputs;
     }
-
-    private boolean doAction(String[] inputs) {
+@Override
+    public boolean doAction(String[] inputs) {
         String menuItem = inputs[0];
         menuItem = menuItem.toUpperCase();
         switch (menuItem) {
@@ -68,12 +52,12 @@ class MainMenuView {
     private void startNewGame() {
         GameControl.createNewGame(Datingsimulator.getPlayer());
         GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.displayGameMenuView();
+        gameMenuView.display();
     }
 
     private void getHelp() {
         HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayHelpMenuView();
+        helpMenuView.display();
 
     }
 

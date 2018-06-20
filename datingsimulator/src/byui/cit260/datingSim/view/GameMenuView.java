@@ -11,43 +11,24 @@ import java.util.Scanner;
  *
  * @author noahadams
  */
-class GameMenuView {
+public class GameMenuView extends View {
 
     public GameMenuView() {
     }
-
-    public void displayGameMenuView() {
-        boolean endOfView = false;
-        do {
-            String[] inputs = getInputs();
-
-            endOfView = doAction(inputs);
-
-        } while (endOfView != true);
-    }
-
-    private String[] getInputs() {
+    
+@Override
+    public String[] getInputs() {
         String[] inputs = new String[1];
-        System.out.println("**************************");
-        System.out.println("M - Map\n" + "T - Socialize\n" + "A - Ask out on date\n"
-                + "R - View relationship status\n" + "I - View inventory\n" + "W - Work\n" +"C - Calculate Interest\n" + "D - Dates Locations\n" + "S - Save\n" + "Q - Go back to main menu");
-        System.out.println("**************************");
-        boolean valid = false;
-        while (valid == false) {
-            System.out.println("Enter the selected menu item.");
-            Scanner inFile = new Scanner(System.in);
-            inputs[0] = inFile.nextLine();
-
-            if (inputs[0].length() < 1) {
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-            valid = true;
-        }
+        String game = this.getInput("M - Map\n" + "T - Socialize\n" + "A - Ask out on date\n"
+                + "R - View relationship status\n" + "I - View inventory\n" + "W - Work\n" +"C - Calculate Interest\n" 
+                + "D - Dates Locations\n" + "S - Save\n" + "Q - Go back to main menu");
+       inputs[0] = game;
+         
         return inputs;
     }
 
-    private boolean doAction(String[] inputs) {
+    @Override
+    public boolean doAction(String[] inputs) {
         String menuItem = inputs[0];
         menuItem = menuItem.toUpperCase();
         switch (menuItem) {
@@ -128,5 +109,7 @@ class GameMenuView {
         DateMenuView dateMenuView = new DateMenuView();
         dateMenuView.displayDateMenuView();
     }
+
+    
 
 }
