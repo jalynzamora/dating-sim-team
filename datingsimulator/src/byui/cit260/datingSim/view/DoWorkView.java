@@ -12,51 +12,24 @@ import java.util.Scanner;
  *
  * @author jalynzamora
  */
-class DoWorkView {
+public class DoWorkView extends View {
 
     public DoWorkView() {
     }
 
-    public void displayDoWorkView() {
-        boolean endOfView = false;
-        do {
-            String[] inputs = getInputs();
-
-            endOfView = doAction(inputs);
-
-        } while (endOfView != true);
-    }
-
-    private String[] getInputs() {
+    @Override
+    public String[] getInputs() {
         String[] inputs = new String[2];
-        boolean valid = false;
-        while (valid == false) {
-            System.out.println("Enter money earned:");
-            Scanner inFile = new Scanner(System.in);
-            inputs[0] = inFile.nextLine();
-
-            if (inputs[0].length() < 1) {
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-            valid = true;
-        }
-        valid = false;
-        while (valid == false) {
-            System.out.println("Enter bonus earned:");
-            Scanner inFile = new Scanner(System.in);
-            inputs[1] = inFile.nextLine();
-
-            if (inputs[1].length() < 1) {
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-            valid = true;
-        }
+        String money = this.getInput("Enter money earned:");
+        inputs[0] = money;
+       
+        String bonus = this.getInput("Enter bonus earned:");
+        inputs[1] = bonus;
         return inputs;
     }
 
-    private boolean doAction(String[] inputs) {
+    @Override
+    public boolean doAction(String[] inputs) {
         double money = Double.parseDouble(inputs[0]);
         double bonus = Double.parseDouble(inputs[1]);
 

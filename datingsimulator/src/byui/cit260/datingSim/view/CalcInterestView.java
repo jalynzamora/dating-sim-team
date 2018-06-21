@@ -13,77 +13,41 @@ import java.util.Scanner;
  *
  * @author noahadams
  */
-class CalcInterestView {
+public class CalcInterestView extends View{
 
     public CalcInterestView() {
     }
 
-    public void displayCalcInterestView() {
-        boolean endOfView = false;
-        do {
-            String[] inputs = getInputs();
-
-            endOfView = doAction(inputs);
-
-        } while (endOfView != true);
-    }
-
-    private String[] getInputs() {
+    @Override
+    public String[] getInputs() {
         String[] inputs = new String[3];
-        boolean valid = false;
-        while (valid == false) {
-            System.out.println("Enter the amount of money you borrowed");
-            Scanner inFile = new Scanner(System.in);
-            inputs[0] = inFile.nextLine();
+        String money = this.getInput("Enter the amount of money you borrowed");
+        inputs[0] = money;
 
-            if (inputs[0].length() < 1) {
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-            valid = true;
-        }
-        valid = false;
-        while (valid == false) {
-            System.out.println("Enter the interest rate");
-            Scanner inFile = new Scanner(System.in);
-            inputs[1] = inFile.nextLine();
+        String rate = this.getInput("Enter the interest rate");
+        inputs[1] = rate;
 
-            if (inputs[1].length() < 1) {
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-            valid = true;
-        }
-        valid = false;
-        while (valid == false) {
-            System.out.println("Enter years");
-            Scanner inFile = new Scanner(System.in);
-            inputs[2] = inFile.nextLine();
-
-            if (inputs[1].length() < 1) {
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-            valid = true;
-        }
+        String year = this.getInput("Enter years");
+        inputs[2] = year;
         return inputs;
     }
-
-    private boolean doAction(String[] inputs) {
+    
+    @Override
+    public boolean doAction(String[] inputs) {
         double principal = Double.parseDouble(inputs[0]);
         double rate = Double.parseDouble(inputs[1]);
         double years = Double.parseDouble(inputs[2]);
         double interest = InterestControl.calcInterest(principal, rate, years);
 
-        if (principal == -1) {
+        if (interest == -1) {
             System.out.println("Invaild amount borrowed. Please enter a valid value. Try again");
             return false;
         }
-        if (rate == -2) {
+        if (interest == -2) {
             System.out.println("Invaild interest rate. Please enter a valid value. Try again");
             return false;
         }
-        if (years == -3) {
+        if (interest == -3) {
             System.out.println("Invaild amount of years. Please enter a valid value. Try again");
             return false;
         }

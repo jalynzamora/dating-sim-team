@@ -93,12 +93,12 @@ public class GameMenuView extends View {
         System.out.println("**************************");
         
         DoWorkView doWorkView = new DoWorkView();
-        doWorkView.displayDoWorkView();
+        doWorkView.display();
     }
     
     private void openInterest() {
     CalcInterestView calcInterestView = new CalcInterestView();
-    calcInterestView.displayCalcInterestView();
+    calcInterestView.display();
 }
 
     private void saveGame() {
@@ -107,7 +107,7 @@ public class GameMenuView extends View {
 
     private void openDateLocation() {
         DateMenuView dateMenuView = new DateMenuView();
-        dateMenuView.displayDateMenuView();
+        dateMenuView.display();
     }
 
     
