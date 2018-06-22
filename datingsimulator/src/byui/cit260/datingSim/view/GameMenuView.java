@@ -20,7 +20,7 @@ public class GameMenuView extends View {
     public String[] getInputs() {
         String[] inputs = new String[1];
         String game = this.getInput("M - Map\n" + "T - Socialize\n" + "A - Ask out on date\n"
-                + "R - View relationship status\n" + "I - View inventory\n" + "W - Work\n" +"C - Calculate Interest\n" 
+                + "R - View relationship status\n" + "I - View inventory\n" + "P - Shop\n" + "W - Work\n" +"C - Calculate Interest\n" 
                 + "D - Dates Locations\n" + "S - Save\n" + "Q - Go back to main menu");
        inputs[0] = game;
          
@@ -45,6 +45,9 @@ public class GameMenuView extends View {
                 this.viewStatus();
             case "I":
                 this.viewInventory();
+                break;
+            case "P":
+                this.openShop();
                 break;
             case "W":
                 this.openWork();
@@ -106,8 +109,14 @@ public class GameMenuView extends View {
     }
 
     private void openDateLocation() {
+        System.out.println("**************************\n" +"Let's shop\n" + "**************************");
         DateMenuView dateMenuView = new DateMenuView();
         dateMenuView.display();
+    }
+
+    private void openShop() {
+       ShopView shopView = new ShopView();
+       shopView.display();
     }
 
     
