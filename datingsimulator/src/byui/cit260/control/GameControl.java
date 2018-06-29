@@ -82,6 +82,27 @@ public class GameControl {
         relationship.setNumPoints(10);
         questions[QuestionType.relationship.ordinal()] = relationship;
 
+        Question work = new Question();
+        work.setQuestion("How much money did I make today, boss?");
+        work.setAnswer("");
+        work.setRequired(true);
+        work.setNumPoints(10);
+        questions[QuestionType.work.ordinal()] = relationship;
+        
+        Question gym = new Question();
+        gym.setQuestion("Do you even lift?");
+        gym.setAnswer("");
+        gym.setRequired(false);
+        gym.setNumPoints(10);
+        questions[QuestionType.gym.ordinal()] = relationship;
+        
+        Question proposal = new Question();
+        proposal.setQuestion("Sooooo, you're gonna marry me, right?");
+        proposal.setAnswer("");
+        proposal.setRequired(true);
+        proposal.setNumPoints(10);
+        questions[QuestionType.proposal.ordinal()] = relationship;
+        
         return questions;
     }
 
