@@ -44,10 +44,14 @@ public class GameControl {
         InventoryItem[] inventoryList = createItems();
 
         Question[] questions = createQuestions();
-        
+
         Map map = createMap(game, 5, 5);
 
-        return 0;
+        if (map == null) {
+            return -2;
+        }
+        game.setMap(map);
+        return 1;
     }
 
     public static InventoryItem[] createItems() {
@@ -82,9 +86,12 @@ public class GameControl {
     }
 
     public static Map createMap(Game game, int noOfRows, int noOfColumns) {
-    return null;
+
+        System.out.println("createMap() was called");
+        Map map = new Map();
+
+        return map;
+
     }
-
-
 
 }

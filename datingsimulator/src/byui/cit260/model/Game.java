@@ -7,6 +7,7 @@ package byui.cit260.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -19,6 +20,8 @@ public class Game implements Serializable {
     private double money;
     private Player player;
     private ArrayList<InventoryItem> inventoryItems = new ArrayList<>();
+    private InventoryItem[] inventory;
+    private Map map;
     
     public Game() {
     }
@@ -27,49 +30,67 @@ public class Game implements Serializable {
         return totalDays;
     }
 
-    public void setTotalDays(double totalDays) {
-        this.totalDays = totalDays;
-    }
-
     public double getMoney() {
         return money;
-    }
-
-    public void setMoney(double money) {
-        this.money = money;
     }
 
     public Player getPlayer() {
         return player;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
     public ArrayList<InventoryItem> getInventoryItems() {
         return inventoryItems;
+    }
+
+    public InventoryItem[] getInventory() {
+        return inventory;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setTotalDays(double totalDays) {
+        this.totalDays = totalDays;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public void setInventoryItems(ArrayList<InventoryItem> inventoryItems) {
         this.inventoryItems = inventoryItems;
     }
 
+    public void setInventory(InventoryItem[] inventory) {
+        this.inventory = inventory;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 17 * hash + (int) (Double.doubleToLongBits(this.totalDays) ^ (Double.doubleToLongBits(this.totalDays) >>> 32));
-        hash = 17 * hash + (int) (Double.doubleToLongBits(this.money) ^ (Double.doubleToLongBits(this.money) >>> 32));
-        hash = 17 * hash + Objects.hashCode(this.player);
-        hash = 17 * hash + Objects.hashCode(this.inventoryItems);
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.totalDays) ^ (Double.doubleToLongBits(this.totalDays) >>> 32));
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.money) ^ (Double.doubleToLongBits(this.money) >>> 32));
+        hash = 89 * hash + Objects.hashCode(this.player);
+        hash = 89 * hash + Objects.hashCode(this.inventoryItems);
+        hash = 89 * hash + Arrays.deepHashCode(this.inventory);
+        hash = 89 * hash + Objects.hashCode(this.map);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Game{" + "totalDays=" + totalDays + ", money=" + money + ", player=" + player + ", inventoryItems=" + inventoryItems + '}';
+        return "Game{" + "totalDays=" + totalDays + ", money=" + money + ", player=" + player + ", inventoryItems=" + inventoryItems + ", inventory=" + inventory + ", map=" + map + '}';
     }
-   
+    
 
     @Override
     public boolean equals(Object obj) {
@@ -95,7 +116,15 @@ public class Game implements Serializable {
         if (!Objects.equals(this.inventoryItems, other.inventoryItems)) {
             return false;
         }
+        if (!Arrays.deepEquals(this.inventory, other.inventory)) {
+            return false;
+        }
+        if (!Objects.equals(this.map, other.map)) {
+            return false;
+        }
         return true;
     }
-    
 }
+   
+
+    

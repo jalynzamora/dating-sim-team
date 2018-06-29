@@ -18,6 +18,14 @@ public class InventoryItem implements Serializable{
     private String description;
     private double quantity;
     private Game game;
+
+    public InventoryItem(String itemType, String description, double quantity) {
+        this.itemType = itemType;
+        this.description = description;
+        this.quantity = quantity;
+    }
+    
+    
     
     public InventoryItem() {
     }

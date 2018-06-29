@@ -5,6 +5,7 @@
  */
 package byui.cit260.datingSim.view;
 
+import byui.cit260.control.GameControl;
 import byui.cit260.model.Player;
 import java.util.Scanner;
 
