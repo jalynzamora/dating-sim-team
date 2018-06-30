@@ -11,5 +11,7 @@ package byui.cit260.model;
  */
 public enum QuestionType {
     relationship,
-    work;
+    work,
+    proposal,
+    gym;
 }
