@@ -45,7 +45,7 @@ public class GameControl {
 
         Question[] questions = createQuestions();
 
-        Map map = createMap(game, 5, 5);
+        Map map = MapControl.createMap(game, 5, 5);
 
         if (map == null) {
             return -2;
@@ -85,13 +85,5 @@ public class GameControl {
         return questions;
     }
 
-    public static Map createMap(Game game, int noOfRows, int noOfColumns) {
-
-        System.out.println("createMap() was called");
-        Map map = new Map();
-
-        return map;
-
-    }
 
 }
