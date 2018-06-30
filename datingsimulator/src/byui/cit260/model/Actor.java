@@ -20,7 +20,8 @@ public enum Actor implements Serializable {
     Daphne("Daphne", "Female", new Point(0, 1)),
     Velma("Velma", "Female", new Point(1, 0)),
     Cardi("Cardi", "Female", new Point(2, 0)),
-    Playerm("Playerm", "Male", new Point (3, 1));
+    Playerm("Playerm", "Male", new Point (3, 0)),
+    Playerf("Playerf", "Female", new Point (0, 3));
     
 
     private final String name;

@@ -5,6 +5,10 @@
  */
 package byui.cit260.datingSim.view;
 
+import byui.cit260.model.Game;
+import byui.cit260.model.Location;
+import byui.cit260.model.Map;
+import datingsimulator.Datingsimulator;
 import java.util.Scanner;
 
 /**
@@ -15,14 +19,14 @@ public class GameMenuView extends View {
 
     public GameMenuView() {
     }
-    
-@Override
+
+    @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
         String game = this.getInput("M - Map\n" + "T - Socialize\n" + "A - Ask out on date\n"
-                + "R - View relationship status\n" + "I - View inventory\n" + "P - Shop\n" + "W - Work\n" +"C - Calculate Interest\n" + 
-                "X - Calculate Cost of a Date\n" + "D - Dates Locations\n" + "S - Save\n" + "Q - Go back to main menu");
-         
+                + "R - View relationship status\n" + "I - View inventory\n" + "P - Shop\n" + "W - Work\n" + "C - Calculate Interest\n"
+                + "X - Calculate Cost of a Date\n" + "D - Dates Locations\n" + "S - Save\n" + "Q - Go back to main menu");
+        inputs[0] = game;
         return inputs;
     }
 
@@ -32,7 +36,7 @@ public class GameMenuView extends View {
         menuItem = menuItem.toUpperCase();
         switch (menuItem) {
             case "M":
-                this.openMap();
+                this.displayMap();
                 break;
             case "T":
                 this.openSocialize();
@@ -71,10 +75,6 @@ public class GameMenuView extends View {
         return false;
     }
 
-    private void openMap() {
-
-    }
-
     private void openSocialize() {
 
     }
@@ -97,31 +97,45 @@ public class GameMenuView extends View {
         System.out.println("Welcome to walmart, let's start working!\n"
                 + "Enter data to calculate the total money earned.");
         System.out.println("**************************");
-        
+
         DoWorkView doWorkView = new DoWorkView();
         doWorkView.display();
     }
-    
+
     private void openInterest() {
-    CalcInterestView calcInterestView = new CalcInterestView();
-    calcInterestView.display();
-}
+        CalcInterestView calcInterestView = new CalcInterestView();
+        calcInterestView.display();
+    }
 
     private void saveGame() {
 
     }
 
     private void openDateLocation() {
-        System.out.println("**************************\n" +"Let's shop\n" + "**************************");
+        System.out.println("**************************\n" + "Let's shop\n" + "**************************");
         DateMenuView dateMenuView = new DateMenuView();
         dateMenuView.display();
     }
 
     private void openShop() {
-       ShopView shopView = new ShopView();
-       shopView.display();
+        ShopView shopView = new ShopView();
+        shopView.display();
     }
 
-    
+    private void displayMap() {
+        Game game = Datingsimulator.getCurrentGame();
+        Map locations = game.getMap();
+        System.out.println("Map of Rexburg");
+        System.out.println("0" + "1" + "2" + "3" + "4" + "5");
 
+        for (int row = 0; row < locations.length; row++) {
+            System.out.println("-----------------------------");
+            System.out.println("0\n" + "1\n" + "2\n" + "3\n" + "4\n" + "5");
+            for (int column = 0; column < locations.length; column++) {
+                System.out.println("|||||||||||||||||||||||||||||");
+             locations[row][column];
+            }
+        }
+
+    }
 }

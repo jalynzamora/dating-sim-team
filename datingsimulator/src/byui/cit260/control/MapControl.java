@@ -7,6 +7,7 @@ package byui.cit260.control;
 
 import byui.cit260.model.Actor;
 import byui.cit260.model.Game;
+import byui.cit260.model.InventoryItem;
 import byui.cit260.model.Location;
 import byui.cit260.model.Map;
 
@@ -31,13 +32,16 @@ public class MapControl {
         map.setCurrentRow(0);
 
         game.setMap(map);
-        
-        Actor[] actors = assignActorsToLocations();
 
-        Location[][] location = createLocations(noOfRows, noOfColumns);
-        if (location == null) {
+        Location[][] locations = createLocations(noOfRows, noOfColumns);
+        if (locations == null) {
             return null;
         }
+        
+        
+
+        int error = assignActorsToLocations(locations);
+
 
         return map;
     }
@@ -48,18 +52,20 @@ public class MapControl {
         return locations;
     }
 
-    private static Actor[] assignActorsToLocations() {
-        
-        Actor[] actors = Actor.values();
-        
-        for(actors ){
-            if()
+    private static int assignActorsToLocations(Location[][] locations) {
+
+        if (locations == null) {
+            return -1;
         }
-            
-        
+
+        Actor[] actors = Actor.values();
+
+        for (Actor actor : actors) {
+            if (actor.getName().equals("playerm") || actor.getName().equals("playerf")) {
+                continue;
+            }
+        }
+        return 1;
     }
-    
-    
-    
 
 }
