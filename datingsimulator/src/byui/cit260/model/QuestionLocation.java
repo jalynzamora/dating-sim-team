@@ -21,6 +21,14 @@ public class QuestionLocation extends Location {
     public QuestionLocation() {
     }
 
+    public QuestionLocation(boolean noCorrect, String type, double row, double column, String displaySymbol, String description, boolean visited) {
+        super(row, column, displaySymbol, description, visited);
+        this.noCorrect = noCorrect;
+        this.type = type;
+    }
+
+    
+    
     public boolean isRequiredCorrect() {
         return requiredCorrect;
     }

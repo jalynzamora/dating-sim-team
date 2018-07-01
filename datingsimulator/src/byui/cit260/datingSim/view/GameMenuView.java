@@ -124,18 +124,26 @@ public class GameMenuView extends View {
 
     private void displayMap() {
         Game game = Datingsimulator.getCurrentGame();
-        Map locations = game.getMap();
+        Location[][] locations = game.getMap().getLocations();
         System.out.println("Map of Rexburg");
-        System.out.println("0" + "1" + "2" + "3" + "4" + "5");
+        System.out.println("  1  2  3  4  5");
 
         for (int row = 0; row < locations.length; row++) {
-            System.out.println("-----------------------------");
-            System.out.println("0\n" + "1\n" + "2\n" + "3\n" + "4\n" + "5");
+            System.out.print("-----------------\n");
+            System.out.print(row+1 + "|");
             for (int column = 0; column < locations.length; column++) {
-                System.out.println("|||||||||||||||||||||||||||||");
-             locations[row][column];
+                Location location = locations[row][column];
+                if (location.isVisited()) {
+                    System.out.print(location.getDisplaySymbol());
+                }
+                else{
+                    System.out.print("??");
+                }
+                System.out.print("|");
             }
+            System.out.print("\n");
+            
         }
-
+        System.out.print("-----------------\n");
     }
 }

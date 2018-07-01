@@ -17,12 +17,22 @@ public class Location implements Serializable {
 
     private double row;
     private double column;
-    private double displaySymbol;
+    private String displaySymbol;
     private String description;
     private boolean visited;
 
     public Location() {
     }
+
+    public Location(double row, double column, String displaySymbol, String description, boolean visited) {
+        this.row = row;
+        this.column = column;
+        this.displaySymbol = displaySymbol;
+        this.description = description;
+        this.visited = visited;
+    }
+    
+    
 
     public double getRow() {
         return row;
@@ -40,13 +50,7 @@ public class Location implements Serializable {
         this.column = column;
     }
 
-    public double getDisplaySymbol() {
-        return displaySymbol;
-    }
-
-    public void setDisplaySymbol(double displaySymbol) {
-        this.displaySymbol = displaySymbol;
-    }
+   
 
     public String getDescription() {
         return description;
@@ -64,20 +68,28 @@ public class Location implements Serializable {
         this.visited = visited;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.row) ^ (Double.doubleToLongBits(this.row) >>> 32));
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.column) ^ (Double.doubleToLongBits(this.column) >>> 32));
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.displaySymbol) ^ (Double.doubleToLongBits(this.displaySymbol) >>> 32));
-        hash = 47 * hash + Objects.hashCode(this.description);
-        hash = 47 * hash + Objects.hashCode(this.visited);
-        return hash;
+    public String getDisplaySymbol() {
+        return displaySymbol;
+    }
+
+    public void setDisplaySymbol(String displaySymbol) {
+        this.displaySymbol = displaySymbol;
     }
 
     @Override
     public String toString() {
         return "Location{" + "row=" + row + ", column=" + column + ", displaySymbol=" + displaySymbol + ", description=" + description + ", visited=" + visited + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + (int) (Double.doubleToLongBits(this.row) ^ (Double.doubleToLongBits(this.row) >>> 32));
+        hash = 31 * hash + (int) (Double.doubleToLongBits(this.column) ^ (Double.doubleToLongBits(this.column) >>> 32));
+        hash = 31 * hash + Objects.hashCode(this.displaySymbol);
+        hash = 31 * hash + Objects.hashCode(this.description);
+        hash = 31 * hash + (this.visited ? 1 : 0);
+        return hash;
     }
 
     @Override
@@ -98,15 +110,17 @@ public class Location implements Serializable {
         if (Double.doubleToLongBits(this.column) != Double.doubleToLongBits(other.column)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.displaySymbol) != Double.doubleToLongBits(other.displaySymbol)) {
+        if (this.visited != other.visited) {
+            return false;
+        }
+        if (!Objects.equals(this.displaySymbol, other.displaySymbol)) {
             return false;
         }
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (!Objects.equals(this.visited, other.visited)) {
-            return false;
-        }
         return true;
     }
+
+
 }

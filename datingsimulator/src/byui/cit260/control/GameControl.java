@@ -9,6 +9,7 @@ import byui.cit260.model.Actor;
 import byui.cit260.model.Game;
 import byui.cit260.model.InventoryItem;
 import byui.cit260.model.InventoryItemType;
+import byui.cit260.model.Location;
 import byui.cit260.model.Map;
 import byui.cit260.model.Player;
 import byui.cit260.model.Question;
@@ -51,6 +52,10 @@ public class GameControl {
             return -2;
         }
         game.setMap(map);
+        
+        Location[][] location = MapControl.createLocations(5, 5);
+        
+        
         return 1;
     }
 
