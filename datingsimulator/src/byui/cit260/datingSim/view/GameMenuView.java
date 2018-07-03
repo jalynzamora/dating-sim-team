@@ -5,6 +5,7 @@
  */
 package byui.cit260.datingSim.view;
 
+import byui.cit260.control.InventoryControl;
 import byui.cit260.model.Game;
 import byui.cit260.model.Location;
 import byui.cit260.model.Map;
@@ -76,7 +77,7 @@ public class GameMenuView extends View {
     }
 
     private void openSocialize() {
-
+    
     }
 
     private void viewStatus() {

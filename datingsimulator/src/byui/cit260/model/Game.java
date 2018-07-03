@@ -19,7 +19,7 @@ public class Game implements Serializable {
     private double totalDays;
     private double money;
     private Player player;
-    private ArrayList<InventoryItem> inventoryItems = new ArrayList<>();
+   
     private InventoryItem[] inventory;
     private Map map;
     
@@ -38,9 +38,7 @@ public class Game implements Serializable {
         return player;
     }
 
-    public ArrayList<InventoryItem> getInventoryItems() {
-        return inventoryItems;
-    }
+   
 
     public InventoryItem[] getInventory() {
         return inventory;
@@ -62,9 +60,7 @@ public class Game implements Serializable {
         this.player = player;
     }
 
-    public void setInventoryItems(ArrayList<InventoryItem> inventoryItems) {
-        this.inventoryItems = inventoryItems;
-    }
+   
 
     public void setInventory(InventoryItem[] inventory) {
         this.inventory = inventory;
@@ -80,7 +76,6 @@ public class Game implements Serializable {
         hash = 89 * hash + (int) (Double.doubleToLongBits(this.totalDays) ^ (Double.doubleToLongBits(this.totalDays) >>> 32));
         hash = 89 * hash + (int) (Double.doubleToLongBits(this.money) ^ (Double.doubleToLongBits(this.money) >>> 32));
         hash = 89 * hash + Objects.hashCode(this.player);
-        hash = 89 * hash + Objects.hashCode(this.inventoryItems);
         hash = 89 * hash + Arrays.deepHashCode(this.inventory);
         hash = 89 * hash + Objects.hashCode(this.map);
         return hash;
@@ -88,7 +83,7 @@ public class Game implements Serializable {
 
     @Override
     public String toString() {
-        return "Game{" + "totalDays=" + totalDays + ", money=" + money + ", player=" + player + ", inventoryItems=" + inventoryItems + ", inventory=" + inventory + ", map=" + map + '}';
+        return "Game{" + "totalDays=" + totalDays + ", money=" + money + ", player=" + player +  ", inventory=" + inventory + ", map=" + map + '}';
     }
     
 
@@ -111,9 +106,6 @@ public class Game implements Serializable {
             return false;
         }
         if (!Objects.equals(this.player, other.player)) {
-            return false;
-        }
-        if (!Objects.equals(this.inventoryItems, other.inventoryItems)) {
             return false;
         }
         if (!Arrays.deepEquals(this.inventory, other.inventory)) {
