@@ -6,6 +6,7 @@
 package byui.cit260.datingSim.view;
 
 import byui.cit260.control.GameControl;
+import byui.cit260.exception.MapControlException;
 import datingsimulator.Datingsimulator;
 import java.util.Scanner;
 
@@ -14,21 +15,20 @@ import java.util.Scanner;
  * @author noahadams
  */
 public class MainMenuView extends View {
+
     public MainMenuView() {
     }
 
-    
-        
-        
-@Override
+    @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
         String menu = this.getInput("N - New game\n" + "R - Restart game\n" + "H - Get help\n" + "Q - Quit");
         inputs[0] = menu;
-        
+
         return inputs;
     }
-@Override
+
+    @Override
     public boolean doAction(String[] inputs) {
         String menuItem = inputs[0];
         menuItem = menuItem.toUpperCase();
@@ -51,7 +51,9 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() {
+
         GameControl.createNewGame(Datingsimulator.getPlayer());
+
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display();
     }
