@@ -6,6 +6,7 @@
 package byui.cit260.datingSim.view;
 
 import byui.cit260.control.GameControl;
+import byui.cit260.control.MapControl;
 import byui.cit260.exception.MapControlException;
 import datingsimulator.Datingsimulator;
 import java.util.Scanner;
@@ -30,11 +31,19 @@ public class MainMenuView extends View {
 
     @Override
     public boolean doAction(String[] inputs) {
+
+    
         String menuItem = inputs[0];
         menuItem = menuItem.toUpperCase();
         switch (menuItem) {
-            case "N":
+            case "N": try{
+                 
+            
                 this.startNewGame();
+            } catch (MapControlException me) {
+                System.out.println(me.getMessage());
+                return false;
+            }
                 break;
             case "R":
                 this.restartGame();
@@ -50,7 +59,7 @@ public class MainMenuView extends View {
         return false;
     }
 
-    private void startNewGame() {
+    private void startNewGame() throws MapControlException {
 
         GameControl.createNewGame(Datingsimulator.getPlayer());
 

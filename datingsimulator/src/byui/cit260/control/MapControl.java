@@ -5,6 +5,7 @@
  */
 package byui.cit260.control;
 
+import byui.cit260.exception.MapControlException;
 import byui.cit260.model.Actor;
 import byui.cit260.model.Game;
 import byui.cit260.model.InventoryItem;
@@ -18,10 +19,10 @@ import byui.cit260.model.QuestionLocation;
  */
 public class MapControl {
 
-    public static Map createMap(Game game, int noOfRows, int noOfColumns) {
+    public static Map createMap(Game game, int noOfRows, int noOfColumns) throws MapControlException {
 
         if (game == null || noOfRows < 0 || noOfColumns < 0) {
-            return null;
+            throw new MapControlException("The coordinates you enter must be valid.");
         }
 
         Map map = new Map();
@@ -36,11 +37,11 @@ public class MapControl {
 
         Location[][] locations = createLocations(noOfRows, noOfColumns);
         if (locations == null) {
-            return null;
+            throw new MapControlException("Enter a valid location.");
         }
         map.setLocations(locations);
         
-        int error = assignActorsToLocations(locations);
+        assignActorsToLocations(locations);
 
 
         return map;
@@ -78,10 +79,10 @@ public class MapControl {
         return locations;
     }
 
-    private static int assignActorsToLocations(Location[][] locations) {
+    private static void assignActorsToLocations(Location[][] locations) throws MapControlException {
 
         if (locations == null) {
-            return -1;
+            throw new MapControlException("You must enter a valid location.");
         }
 
         Actor[] actors = Actor.values();
@@ -91,7 +92,7 @@ public class MapControl {
                 continue;
             }
         }
-        return 1;
+        
     }
 
 }

@@ -5,6 +5,7 @@
  */
 package byui.cit260.control;
 
+import byui.cit260.exception.MapControlException;
 import byui.cit260.model.Actor;
 import byui.cit260.model.Game;
 import byui.cit260.model.InventoryItem;
@@ -32,7 +33,7 @@ public class GameControl {
         return player;
     }
 
-    public static int createNewGame(Player player) {
+    public static int createNewGame(Player player) throws MapControlException {
         if (player == null) {
             return -1;
         }
