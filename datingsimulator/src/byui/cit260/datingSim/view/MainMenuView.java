@@ -32,18 +32,17 @@ public class MainMenuView extends View {
     @Override
     public boolean doAction(String[] inputs) {
 
-    
         String menuItem = inputs[0];
         menuItem = menuItem.toUpperCase();
         switch (menuItem) {
-            case "N": try{
-                 
-            
-                this.startNewGame();
-            } catch (MapControlException me) {
-                System.out.println(me.getMessage());
-                return false;
-            }
+            case "N":
+                try {
+
+                    this.startNewGame();
+                } catch (MapControlException me) {
+                    System.out.println(me.getMessage());
+                    return false;
+                }
                 break;
             case "R":
                 this.restartGame();

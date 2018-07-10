@@ -34,10 +34,17 @@ public class CalcInterestView extends View{
     
     @Override
     public boolean doAction(String[] inputs) {
-        double principal = Double.parseDouble(inputs[0]);
-        double rate = Double.parseDouble(inputs[1]);
-        double years = Double.parseDouble(inputs[2]);
-        double interest = InterestControl.calcInterest(principal, rate, years);
+        double principal = 0;
+        double rate = 0;
+        double years = 0;
+        double interest = 0;
+        try { principal = Double.parseDouble(inputs[0]);
+       rate = Double.parseDouble(inputs[1]);
+       years = Double.parseDouble(inputs[2]);
+       interest = InterestControl.calcInterest(principal, rate, years);
+        } catch(NumberFormatException nfe) {
+            System.out.println("ERROR " + nfe.getMessage());
+        }
 
         if (interest == -1) {
             System.out.println("Invaild amount borrowed. Please enter a valid value. Try again");

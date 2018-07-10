@@ -22,8 +22,12 @@ public class Datingsimulator {
     private static Player player = null;
 
     public static void main(String[] args) {
-        StartProgramView startProgramView = new StartProgramView();
-        startProgramView.display();
+        try {
+            StartProgramView startProgramView = new StartProgramView();
+            startProgramView.display();
+        } catch(Throwable ex){
+        System.out.println(ex.fillInStackTrace());
+    }
     }
 
     public static Game getCurrentGame() {
