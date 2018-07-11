@@ -12,6 +12,8 @@ import byui.cit260.model.InventoryItem;
 import byui.cit260.model.Location;
 import byui.cit260.model.Map;
 import byui.cit260.model.QuestionLocation;
+import datingsimulator.Datingsimulator;
+import static datingsimulator.Datingsimulator.getCurrentGame;
 
 /**
  *
@@ -95,4 +97,50 @@ public class MapControl {
         
     }
 
+   /* public static Location moveActor(actor, newRow, newColumn) {
+ if actor is null then
+ throw MapControlException
+ endIf
+ game = get the currentGame in the main class
+ map = get the map in the game object
+ locations = get the locations in the map
+ if (newRow < 1 OR newRow > noOfRows in map OR
+ newColumn < 1 OR newColumn > noOfColumns in map) then
+ throw MapControlException
+ endIf
+ currentRow = get the row from the actor
+ currentColumn = get the column from the actor
+ oldLocation = get the location from the locations
+ array at the current row and column
+ newLocation = get the location at the new row and column
+ set actor in the oldLocation to null
+ set actor in the newLocation to the actor
+ set row in actor to newRow
+ set column in actor to newColumn
+ return newLocation
+}*/
+    
+    public static Location moveActor(Actor actor, int newRow, int newColumn) throws MapControlException {
+       if (actor == null) {
+           throw new MapControlException("you must enter a valid coordinate");
+       }
+       Game game = Datingsimulator.getCurrentGame();
+       Map map = game.getMap();
+       Location[][] locations = map.getLocations();
+       
+       if (newRow < 1 || newRow > map.getRowCount() ||
+               newColumn < 1 || newColumn > map.getColumnCount()){
+           throw new MapControlException("Enter something valid.");
+       }
+        
+       int currentRow = actor.getCoordinates().y;
+       int currentColumn = actor.getCoordinates().x;
+       oldLocation = locations[currentRow][currentColumn];
+    
+        
+        return null;
+        
+    }
+    
+    
 }
