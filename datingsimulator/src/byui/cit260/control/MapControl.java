@@ -42,16 +42,15 @@ public class MapControl {
             throw new MapControlException("Enter a valid location.");
         }
         map.setLocations(locations);
-        
-        assignActorsToLocations(locations);
 
+        assignActorsToLocations(locations);
 
         return map;
     }
 
     public static Location[][] createLocations(int noOfRows, int noOfColumns) {
         Location[][] locations = new Location[noOfRows][noOfColumns];
-        
+
         locations[0][0] = new Location(0, 0, "..", "an empty street", false);
         locations[1][0] = new Location(1, 0, "..", "a reealllly empty street", false);
         locations[2][0] = new Location(2, 0, "..", "Crime scene, meth lab bust", false);
@@ -61,22 +60,22 @@ public class MapControl {
         locations[1][1] = new Location(1, 1, "..", "McDonalds", false);
         locations[2][1] = new Location(2, 1, "..", "Math Lab", false);
         locations[3][1] = new Location(3, 1, "..", "an empty street", false);
-        locations[4][1] = new QuestionLocation(true, "gym",4, 1, "##", "pump iron", true);
-        locations[0][2] = new Location(0, 2,"..", "Park", false);
-        locations[1][2] = new Location(1, 2,"..", "Freddys", false);
-        locations[2][2] = new Location(2, 2,"..", "an empty street", false);
-        locations[3][2] = new Location(3, 2,"..", "CupBop", false);
-        locations[4][2] = new Location(4, 2,"..", "an empty street", false);
-        locations[0][3] = new Location(0, 3,"..", "an empty street", false);
-        locations[1][3] = new Location(1, 3,"..", "Sodavine", false);
-        locations[2][3] = new Location(2, 3,"..", "Dominos", false);
-        locations[3][3] = new Location(3, 3,"..", "an empty street", false);
-        locations[4][3] = new Location(4, 3,"..", "an empty street", false);
-        locations[0][4] = new Location(0, 4,"..", "TacoBell", false);
-        locations[1][4] = new Location(1, 4,"..", "an empty street", false);
-        locations[2][4]= new QuestionLocation(true, "work", 2, 4, "$$", "a soul sucking hive of scum and villany", true);
-        locations[3][4] = new Location(3, 4,"..", "Walmart", false);
-        locations[4][4] = new Location(4, 4,"..", "an empty street", false);
+        locations[4][1] = new QuestionLocation(true, "gym", 4, 1, "##", "pump iron", true);
+        locations[0][2] = new Location(0, 2, "..", "Park", false);
+        locations[1][2] = new Location(1, 2, "..", "Freddys", false);
+        locations[2][2] = new Location(2, 2, "..", "an empty street", false);
+        locations[3][2] = new Location(3, 2, "..", "CupBop", false);
+        locations[4][2] = new Location(4, 2, "..", "an empty street", false);
+        locations[0][3] = new Location(0, 3, "..", "an empty street", false);
+        locations[1][3] = new Location(1, 3, "..", "Sodavine", false);
+        locations[2][3] = new Location(2, 3, "..", "Dominos", false);
+        locations[3][3] = new Location(3, 3, "..", "an empty street", false);
+        locations[4][3] = new Location(4, 3, "..", "an empty street", false);
+        locations[0][4] = new Location(0, 4, "..", "TacoBell", false);
+        locations[1][4] = new Location(1, 4, "..", "an empty street", false);
+        locations[2][4] = new QuestionLocation(true, "work", 2, 4, "$$", "a soul sucking hive of scum and villany", true);
+        locations[3][4] = new Location(3, 4, "..", "Walmart", false);
+        locations[4][4] = new Location(4, 4, "..", "an empty street", false);
 
         return locations;
     }
@@ -94,53 +93,33 @@ public class MapControl {
                 continue;
             }
         }
-        
+
     }
 
-   /* public static Location moveActor(actor, newRow, newColumn) {
- if actor is null then
- throw MapControlException
- endIf
- game = get the currentGame in the main class
- map = get the map in the game object
- locations = get the locations in the map
- if (newRow < 1 OR newRow > noOfRows in map OR
- newColumn < 1 OR newColumn > noOfColumns in map) then
- throw MapControlException
- endIf
- currentRow = get the row from the actor
- currentColumn = get the column from the actor
- oldLocation = get the location from the locations
- array at the current row and column
- newLocation = get the location at the new row and column
- set actor in the oldLocation to null
- set actor in the newLocation to the actor
- set row in actor to newRow
- set column in actor to newColumn
- return newLocation
-}*/
-    
     public static Location moveActor(Actor actor, int newRow, int newColumn) throws MapControlException {
-       if (actor == null) {
-           throw new MapControlException("you must enter a valid coordinate");
-       }
-       Game game = Datingsimulator.getCurrentGame();
-       Map map = game.getMap();
-       Location[][] locations = map.getLocations();
-       
-       if (newRow < 1 || newRow > map.getRowCount() ||
-               newColumn < 1 || newColumn > map.getColumnCount()){
-           throw new MapControlException("Enter something valid.");
-       }
-        
-       int currentRow = actor.getCoordinates().y;
-       int currentColumn = actor.getCoordinates().x;
-       oldLocation = locations[currentRow][currentColumn];
-    
-        
-        return null;
-        
+        if (actor == null) {
+            throw new MapControlException("you must enter a valid coordinate");
+        }
+        Game game = Datingsimulator.getCurrentGame();
+        Map map = game.getMap();
+        Location[][] locations = map.getLocations();
+
+        if (newRow < 1 || newRow > map.getRowCount()
+                || newColumn < 1 || newColumn > map.getColumnCount()) {
+            throw new MapControlException("Enter something valid.");
+        }
+
+        int currentRow = actor.getCoordinates().y;
+        int currentColumn = actor.getCoordinates().x;
+        Location oldLocation = locations[currentRow][currentColumn];
+
+        Location newLocation = locations[newRow][newColumn];
+
+        newRow = actor.getCoordinates().y;
+        newColumn = actor.getCoordinates().x;
+
+        return newLocation;
+
     }
-    
-    
+
 }
