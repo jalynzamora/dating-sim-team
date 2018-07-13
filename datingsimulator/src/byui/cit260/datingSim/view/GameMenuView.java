@@ -24,7 +24,7 @@ public class GameMenuView extends View {
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
-        String game = this.getInput("M - Map\n" + "T - Socialize\n" + "A - Ask out on date\n"
+        String game = this.getInput("M - Map\n" + "O - Move Actor\n" + "T - Socialize\n" + "A - Ask out on date\n"
                 + "R - View relationship status\n" + "I - View inventory\n" + "P - Shop\n" + "W - Work\n" + "C - Calculate Interest\n"
                 + "X - Calculate Cost of a Date\n" + "D - Dates Locations\n" + "S - Save\n" + "Q - Go back to main menu");
         inputs[0] = game;
@@ -38,6 +38,9 @@ public class GameMenuView extends View {
         switch (menuItem) {
             case "M":
                 this.displayMap();
+                break;
+            case "O":
+                this.openMoveActor();
                 break;
             case "T":
                 this.openSocialize();
@@ -146,5 +149,11 @@ public class GameMenuView extends View {
             
         }
         System.out.print("-----------------\n");
+    }
+
+    private void openMoveActor() {
+        System.out.println("Move your actor");
+        MoveActorView moveActorView = new MoveActorView();
+        moveActorView.display();
     }
 }
