@@ -21,6 +21,7 @@ public class Game implements Serializable {
     private Player player;
    
     private InventoryItem[] inventory;
+    private Question[] questions;
     private Map map;
     
     public Game() {
@@ -47,6 +48,15 @@ public class Game implements Serializable {
     public Map getMap() {
         return map;
     }
+
+    public Question[] getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Question[] questions) {
+        this.questions = questions;
+    }
+    
 
     public void setTotalDays(double totalDays) {
         this.totalDays = totalDays;

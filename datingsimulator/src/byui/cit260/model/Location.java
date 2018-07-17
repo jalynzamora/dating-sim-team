@@ -20,6 +20,7 @@ public class Location implements Serializable {
     private String displaySymbol;
     private String description;
     private boolean visited;
+    private Actor actor;
 
     public Location() {
     }
@@ -76,6 +77,15 @@ public class Location implements Serializable {
         this.displaySymbol = displaySymbol;
     }
 
+    public Actor getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor actor) {
+        this.actor = actor;
+    }
+
+    
     @Override
     public String toString() {
         return "Location{" + "row=" + row + ", column=" + column + ", displaySymbol=" + displaySymbol + ", description=" + description + ", visited=" + visited + '}';

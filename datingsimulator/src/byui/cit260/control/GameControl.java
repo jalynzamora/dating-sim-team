@@ -44,9 +44,11 @@ public class GameControl {
         player.setActor(Actor.Playerm);
 
         InventoryItem[] inventoryList = createItems();
-        Datingsimulator.getCurrentGame().setInventory(inventoryList);
+        game.setInventory(inventoryList);
         
         Question[] questions = createQuestions();
+        game.setQuestions(questions);
+        
 
         Map map = MapControl.createMap(game, 5, 5);
 
@@ -55,7 +57,6 @@ public class GameControl {
         }
         game.setMap(map);
         
-        Location[][] location = MapControl.createLocations(5, 5);
         
         
         return 1;

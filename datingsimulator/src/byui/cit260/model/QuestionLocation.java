@@ -6,6 +6,7 @@
 package byui.cit260.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -14,59 +15,59 @@ import java.util.Objects;
  */
 public class QuestionLocation extends Location {
 
-    private boolean requiredCorrect;
-    private boolean noCorrect;
-    private String type;
+    private int requiredCorrect;
+    private int noCorrect;
+    
+    private ArrayList<Question> question = new ArrayList();
 
     public QuestionLocation() {
     }
 
-    public QuestionLocation(boolean noCorrect, String type, double row, double column, String displaySymbol, String description, boolean visited) {
+    public QuestionLocation(int requiredCorrect, int noCorrect, double row, double column, String displaySymbol, String description, boolean visited) {
         super(row, column, displaySymbol, description, visited);
+        this.requiredCorrect = requiredCorrect;
         this.noCorrect = noCorrect;
-        this.type = type;
     }
 
-    
-    
-    public boolean isRequiredCorrect() {
+    public int getRequiredCorrect() {
         return requiredCorrect;
     }
 
-    public void setRequiredCorrect(boolean requiredCorrect) {
+    public void setRequiredCorrect(int requiredCorrect) {
         this.requiredCorrect = requiredCorrect;
     }
 
-    public boolean isNoCorrect() {
+    public int getNoCorrect() {
         return noCorrect;
     }
 
-    public void setNoCorrect(boolean noCorrect) {
+    public void setNoCorrect(int noCorrect) {
         this.noCorrect = noCorrect;
     }
-
     
-
-    public String getType() {
-        return type;
+   
+    
+    public ArrayList<Question> getQuestion() {
+        return question;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setQuestion(ArrayList<Question> question) {
+        this.question = question;
     }
+
+   
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 43 * hash + Objects.hashCode(this.requiredCorrect);
         hash = 43 * hash + Objects.hashCode(this.noCorrect);
-        hash = 43 * hash + Objects.hashCode(this.type);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "QuestionLocation{" + "requiredCorrect=" + requiredCorrect + ", noCorrect=" + noCorrect + ", type=" + type + '}';
+        return "QuestionLocation{" + "requiredCorrect=" + requiredCorrect + ", noCorrect=" + noCorrect +  '}';
     }
 
     @Override
@@ -85,9 +86,6 @@ public class QuestionLocation extends Location {
             return false;
         }
         if (!Objects.equals(this.noCorrect, other.noCorrect)) {
-            return false;
-        }
-        if (!Objects.equals(this.type, other.type)) {
             return false;
         }
         return true;
