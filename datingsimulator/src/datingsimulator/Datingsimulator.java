@@ -8,6 +8,12 @@ package datingsimulator;
 import byui.cit260.datingSim.view.StartProgramView;
 import byui.cit260.model.Game;
 import byui.cit260.model.Player;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,13 +27,49 @@ public class Datingsimulator {
     private static Game currentGame = null;
     private static Player player = null;
 
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
+
     public static void main(String[] args) {
         try {
+
+            Datingsimulator.inFile = new BufferedReader(new InputStreamReader(System.in));
+            Datingsimulator.outFile = new PrintWriter(System.out, true);
+
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.display();
-        } catch(Throwable ex){
-        System.out.println(ex.fillInStackTrace());
+        } catch (Throwable ex) {
+            System.out.println(ex.fillInStackTrace());
+        } finally {
+            try {
+                if (Datingsimulator.inFile != null) {
+                    Datingsimulator.inFile.close();
+                }
+
+                if (Datingsimulator.outFile != null) {
+                    Datingsimulator.outFile.close();
+                }
+            } catch (IOException ex) {
+                System.out.println("Error closing files.");
+            }
+
+        }
     }
+
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        Datingsimulator.outFile = outFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        Datingsimulator.inFile = inFile;
     }
 
     public static Game getCurrentGame() {
