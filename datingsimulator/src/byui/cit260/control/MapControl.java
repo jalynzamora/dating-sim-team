@@ -11,9 +11,12 @@ import byui.cit260.model.Game;
 import byui.cit260.model.InventoryItem;
 import byui.cit260.model.Location;
 import byui.cit260.model.Map;
+import byui.cit260.model.Question;
 import byui.cit260.model.QuestionLocation;
+import byui.cit260.model.QuestionType;
 import datingsimulator.Datingsimulator;
 import static datingsimulator.Datingsimulator.getCurrentGame;
+import java.awt.Point;
 
 /**
  *
@@ -44,6 +47,7 @@ public class MapControl {
         map.setLocations(locations);
 
         assignActorsToLocations(locations);
+        assignQuestionsToLocations(locations, game.getQuestions());
 
         return map;
     }
@@ -60,7 +64,7 @@ public class MapControl {
         locations[1][1] = new Location(1, 1, "..", "McDonalds", false);
         locations[2][1] = new Location(2, 1, "..", "Math Lab", false);
         locations[3][1] = new Location(3, 1, "..", "an empty street", false);
-        locations[4][1] = new QuestionLocation(true, "gym", 4, 1, "##", "pump iron", true);
+        locations[4][1] = new QuestionLocation(1, 0, 4, 1, "##", "pump iron", true);
         locations[0][2] = new Location(0, 2, "..", "Park", false);
         locations[1][2] = new Location(1, 2, "..", "Freddys", false);
         locations[2][2] = new Location(2, 2, "..", "an empty street", false);
@@ -73,7 +77,7 @@ public class MapControl {
         locations[4][3] = new Location(4, 3, "..", "an empty street", false);
         locations[0][4] = new Location(0, 4, "..", "TacoBell", false);
         locations[1][4] = new Location(1, 4, "..", "an empty street", false);
-        locations[2][4] = new QuestionLocation(true, "work", 2, 4, "$$", "a soul sucking hive of scum and villany", true);
+        locations[2][4] = new QuestionLocation(1, 0, 2, 4, "$$", "a soul sucking hive of scum and villany", true);
         locations[3][4] = new Location(3, 4, "..", "Walmart", false);
         locations[4][4] = new Location(4, 4, "..", "an empty street", false);
 
@@ -89,11 +93,26 @@ public class MapControl {
         Actor[] actors = Actor.values();
 
         for (Actor actor : actors) {
-            if (actor.getName().equals("playerm") || actor.getName().equals("playerf")) {
-                continue;
-            }
+            //get coordinates of actor
+            Point coordinates = actor.getCoordinates();
+            //get the location at cooridinates
+            Location location = locations[coordinates.x][coordinates.y];
+            //assign actor to the location
+             location.setActor(actor);
         }
 
+    }
+    
+    private static void assignQuestionsToLocations(Location[][] locations, Question[] questions){
+  
+    //for every question
+        //get location question is assign to
+        QuestionLocation location = (QuestionLocation) locations[4][1];
+        location.getQuestion().add(questions[QuestionType.gym.ordinal()]);
+        //assign question to location
+    
+        location = (QuestionLocation) locations[2][4];
+        location.getQuestion().add(questions[QuestionType.work.ordinal()]);
     }
 
     public static Location moveActor(Actor actor, int newRow, int newColumn) throws MapControlException {
