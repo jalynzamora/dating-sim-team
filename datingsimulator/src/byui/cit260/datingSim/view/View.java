@@ -6,6 +6,9 @@
 package byui.cit260.datingSim.view;
 
 import byui.cit260.model.Player;
+import datingsimulator.Datingsimulator;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -14,8 +17,14 @@ import java.util.Scanner;
  */
 public abstract class View implements ViewInterface {
 
+    private String message;
+
+    protected final BufferedReader keyboard = Datingsimulator.getInFile();
+    protected final PrintWriter console = Datingsimulator.getOutFile();
+
     public View() {
     }
+
     @Override
     public void display() {
         boolean endOfView = false;
@@ -35,19 +44,20 @@ public abstract class View implements ViewInterface {
         String value = "";
         System.out.println(promptMessage);
         boolean valid = false;
-        
+try{
         while (valid == false) {
-            Scanner inFile = new Scanner(System.in);
-            value = inFile.nextLine();
+            value = this.keyboard.readLine();
+            value = value.trim();
 
             if (value.length() < 1) {
                 System.out.println("You must enter a non-blank value");
                 continue;
             }
-            valid = true;
+            break;
         }
+}catch(Exception e){
+    System.out.println("Error reading input: " + e.getMessage());
+}
         return value;
     }
 }
-
-

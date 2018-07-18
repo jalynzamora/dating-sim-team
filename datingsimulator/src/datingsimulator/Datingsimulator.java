@@ -29,12 +29,15 @@ public class Datingsimulator {
 
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
+    
+    private static PrintWriter logFile = null;
 
     public static void main(String[] args) {
         try {
 
             Datingsimulator.inFile = new BufferedReader(new InputStreamReader(System.in));
             Datingsimulator.outFile = new PrintWriter(System.out, true);
+            logFile = new PrintWriter("logFile.txt");
 
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.display();
@@ -49,13 +52,26 @@ public class Datingsimulator {
                 if (Datingsimulator.outFile != null) {
                     Datingsimulator.outFile.close();
                 }
+                
+                if(logFile != null){
+                    logFile.close();
+                }
             } catch (IOException ex) {
                 System.out.println("Error closing files.");
+                return;
             }
 
         }
     }
 
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        Datingsimulator.logFile = logFile;
+    }
+    
     public static PrintWriter getOutFile() {
         return outFile;
     }
@@ -87,5 +103,4 @@ public class Datingsimulator {
     public static void setPlayer(Player player) {
         Datingsimulator.player = player;
     }
-
 }

@@ -93,23 +93,17 @@ public class MapControl {
         Actor[] actors = Actor.values();
 
         for (Actor actor : actors) {
-            //get coordinates of actor
             Point coordinates = actor.getCoordinates();
-            //get the location at cooridinates
             Location location = locations[coordinates.x][coordinates.y];
-            //assign actor to the location
              location.setActor(actor);
         }
 
     }
     
     private static void assignQuestionsToLocations(Location[][] locations, Question[] questions){
-  
-    //for every question
-        //get location question is assign to
+
         QuestionLocation location = (QuestionLocation) locations[4][1];
         location.getQuestion().add(questions[QuestionType.gym.ordinal()]);
-        //assign question to location
     
         location = (QuestionLocation) locations[2][4];
         location.getQuestion().add(questions[QuestionType.work.ordinal()]);
