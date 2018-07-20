@@ -40,21 +40,21 @@ public class ShopView extends View {
             case "Q":
                 return true;
             default:
-                System.out.println("Invaild item.");
+                this.console.println("Invaild item.");
         }
         return false;
     }
 
     private void GymClothes() {
-       System.out.println("You just bought new gym clothes, it cost $20.");
+       this.console.println("You just bought new gym clothes, it cost $20.");
     }
 
     private void Frisbee() {
-        System.out.println("You just bought new a new frisbee, it cost $10.");
+        this.console.println("You just bought new a new frisbee, it cost $10.");
     }
 
     private void Calc() {
-       System.out.println("You just bought new a new calculator, it cost $10.");
+       this.console.println("You just bought new a new calculator, it cost $10.");
     }
     
 }

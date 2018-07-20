@@ -6,6 +6,7 @@
 package byui.cit260.datingSim.view;
 
 import byui.cit260.control.WorkControl;
+import byui.cit260.exception.WorkControlException;
 import java.util.Scanner;
 
 /**
@@ -30,20 +31,34 @@ public class DoWorkView extends View {
 
     @Override
     public boolean doAction(String[] inputs) {
-        double money = Double.parseDouble(inputs[0]);
-        double bonus = Double.parseDouble(inputs[1]);
-
-        double total = WorkControl.calcTotalMoney(money, bonus);
+        
+        double money = 0;
+        double bonus = 0;
+        double total;
+        
+        try{
+        money = Double.parseDouble(inputs[0]);
+        bonus = Double.parseDouble(inputs[1]);
+        } catch(NumberFormatException nfe){
+            this.console.println(nfe.getMessage());
+        }
+        
+        try{
+            total = WorkControl.calcTotalMoney(money, bonus);
+        } catch(WorkControlException ie){
+            this.console.println(ie.getMessage());
+            return false;
+        }
 
         if (money == -1) {
-            System.out.println("Invaild money. Could not calculate the total. Try again");
+            this.console.println("Invaild money. Could not calculate the total. Try again");
             return false;
         }
         if (bonus == -2) {
-            System.out.println("Invaild bonus. Could not calculate the total. Try again");
+            this.console.println("Invaild bonus. Could not calculate the total. Try again");
             return false;
         }
-        System.out.println("The total money earned is " + total);
+        this.console.println("The total money earned is " + total);
         return true;
     }
 }

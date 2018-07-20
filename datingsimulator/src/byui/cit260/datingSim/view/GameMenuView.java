@@ -74,7 +74,7 @@ public class GameMenuView extends View {
             case "Q":
                 return true;
             default:
-                System.out.println("Invaild menu item.");
+                this.console.println("Invaild menu item.");
         }
         return false;
     }
@@ -97,10 +97,10 @@ public class GameMenuView extends View {
     }
 
     private void openWork() {
-        System.out.println("**************************");
-        System.out.println("Welcome to walmart, let's start working!\n"
+        this.console.println("**************************");
+        this.console.println("Welcome to walmart, let's start working!\n"
                 + "Enter data to calculate the total money earned.");
-        System.out.println("**************************");
+        this.console.println("**************************");
 
         DoWorkView doWorkView = new DoWorkView();
         doWorkView.display();
@@ -116,7 +116,7 @@ public class GameMenuView extends View {
     }
 
     private void openDateLocation() {
-        System.out.println("**************************\n" + "Let's shop\n" + "**************************");
+        this.console.println("**************************\n" + "Let's shop\n" + "**************************");
         DateMenuView dateMenuView = new DateMenuView();
         dateMenuView.display();
     }
@@ -129,30 +129,33 @@ public class GameMenuView extends View {
     private void displayMap() {
         Game game = Datingsimulator.getCurrentGame();
         Location[][] locations = game.getMap().getLocations();
-        System.out.println("Map of Rexburg");
-        System.out.println("  1  2  3  4  5");
+        this.console.println("Map of Rexburg");
+        this.console.println("  1  2  3  4  5");
 
         for (int row = 0; row < locations.length; row++) {
-            System.out.print("-----------------\n");
-            System.out.print(row+1 + "|");
+            this.console.print("-----------------\n");
+            this.console.print(row+1 + "|");
             for (int column = 0; column < locations.length; column++) {
                 Location location = locations[row][column];
-                if (location.isVisited()) {
-                    System.out.print(location.getDisplaySymbol());
+                if(game.getPlayer().getActor().getCoordinates().y == row && game.getPlayer().getActor().getCoordinates().x == column){
+                    this.console.print("**");
+                }    
+                else if (location.isVisited()) {
+                    this.console.print(location.getDisplaySymbol());
+                
+                }else{
+                    this.console.print("??");
                 }
-                else{
-                    System.out.print("??");
-                }
-                System.out.print("|");
+                this.console.print("|");
             }
-            System.out.print("\n");
+            this.console.print("\n");
             
         }
-        System.out.print("-----------------\n");
+        this.console.print("-----------------\n");
     }
 
     private void openMoveActor() {
-        System.out.println("Move your actor");
+        this.console.println("Move your actor");
         MoveActorView moveActorView = new MoveActorView();
         moveActorView.display();
     }

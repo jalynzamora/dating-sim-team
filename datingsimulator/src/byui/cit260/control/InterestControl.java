@@ -5,21 +5,23 @@
  */
 package byui.cit260.control;
 
+import byui.cit260.exception.InterestControlException;
+
 /**
  *
  * @author jalynzamora
  */
 public class InterestControl {
 
-    public static double calcInterest(double borrowed, double interestRate, double years) {
+    public static double calcInterest(double borrowed, double interestRate, double years) throws InterestControlException {
         if (borrowed < 2000 || borrowed > 30000) {
-            return -1;
+            throw new InterestControlException("The amount borrowed must be between 2000 to 30000.");
         }
         if (interestRate < 0.03 || interestRate > 0.1) {
-            return -2;
+            throw new InterestControlException("The interest rate must be between 0.03 to 0.1.");
         }
         if (years < 3 || years > 10) {
-            return -3;
+             throw new InterestControlException("The years must be between 3 to 10.");
         }
         
         double interest = (borrowed * interestRate) * years;

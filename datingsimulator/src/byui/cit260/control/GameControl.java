@@ -5,6 +5,7 @@
  */
 package byui.cit260.control;
 
+import byui.cit260.exception.GameControlException;
 import byui.cit260.exception.MapControlException;
 import byui.cit260.model.Actor;
 import byui.cit260.model.Game;
@@ -16,6 +17,8 @@ import byui.cit260.model.Player;
 import byui.cit260.model.Question;
 import byui.cit260.model.QuestionType;
 import datingsimulator.Datingsimulator;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -25,7 +28,7 @@ public class GameControl {
 
     public static Player savePlayer(String playerName) {
         if (playerName == null || playerName.length() < 1) {
-            return null;
+           return null;
         }
         Player player = new Player();
         player.setName(playerName);
@@ -112,6 +115,16 @@ public class GameControl {
         questions[QuestionType.proposal.ordinal()] = relationship;
         
         return questions;
+    }
+
+    public static void saveGame(Game game, String filePath) throws GameControlException {
+        try (FileOutputStream fos = new FileOutputStream(filePath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fos);
+
+            output.writeObject(game);
+        } catch (Exception ie) {
+            throw new GameControlException(ie.getMessage());
+        }
     }
 
 

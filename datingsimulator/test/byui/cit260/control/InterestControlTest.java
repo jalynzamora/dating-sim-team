@@ -5,6 +5,9 @@
  */
 package byui.cit260.control;
 
+import datingsimulator.Datingsimulator;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -13,7 +16,8 @@ import static org.junit.Assert.*;
  * @author jalynzamora
  */
 public class InterestControlTest {
-    
+    protected final BufferedReader keyboard = Datingsimulator.getInFile();
+    protected final PrintWriter console = Datingsimulator.getOutFile();
     public InterestControlTest() {
     }
 
@@ -22,9 +26,9 @@ public class InterestControlTest {
      */
     @Test
     public void testCalcInterest() {
-        System.out.println("calcInterest");
+        this.console.println("calcInterest");
         
-        System.out.println("\tTest case 1");
+        this.console.println("\tTest case 1");
         
         double borrowed = 30000;
         double interestRate = 0.08;
@@ -35,7 +39,7 @@ public class InterestControlTest {
         
         
         
-        System.out.println("\tTest case 2");
+        this.console.println("\tTest case 2");
          borrowed = 1000;
          interestRate = 0.08;
          years = 7;
@@ -45,7 +49,7 @@ public class InterestControlTest {
 
         
         
-        System.out.println("\tTest case 3");
+        this.console.println("\tTest case 3");
          borrowed = 40000;
          interestRate = 0.08;
          years = 7;
@@ -55,7 +59,7 @@ public class InterestControlTest {
         
         
         
-        System.out.println("\tTest case 4");
+        this.console.println("\tTest case 4");
          borrowed = 15000;
          interestRate = 0.01;
          years = 7;
@@ -65,7 +69,7 @@ public class InterestControlTest {
 
         
         
-         System.out.println("\tTest case 5");
+         this.console.println("\tTest case 5");
          borrowed = 15000;
          interestRate = 0.11;
          years = 7;
@@ -75,7 +79,7 @@ public class InterestControlTest {
 
         
         
-         System.out.println("\tTest case 6");
+         this.console.println("\tTest case 6");
          borrowed = 15000;
          interestRate = 0.08;
          years = 2;
@@ -85,7 +89,7 @@ public class InterestControlTest {
 
         
         
-         System.out.println("\tTest case 7");
+         this.console.println("\tTest case 7");
          borrowed = 15000;
          interestRate = 0.08;
          years = 11;
@@ -95,7 +99,7 @@ public class InterestControlTest {
 
         
         
-        System.out.println("\tTest case 8");
+        this.console.println("\tTest case 8");
          borrowed = 2000;
          interestRate = 0.03;
          years = 3;
@@ -105,7 +109,7 @@ public class InterestControlTest {
         
         
         
-        System.out.println("\tTest case 9");
+        this.console.println("\tTest case 9");
          borrowed = 30000;
          interestRate = 0.10;
          years = 10;

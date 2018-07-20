@@ -23,7 +23,7 @@ public class MoveActorView extends View {
     @Override
     public String[] getInputs() {
         String[] inputs = new String[2];
-        System.out.println("To move an actor, enter coordinates to where you want to go within the map.");
+        this.console.println("To move an actor, enter coordinates to where you want to go within the map.");
 
         String input1 = this.getInput("Enter row:");
         inputs[0] = input1;
@@ -43,23 +43,24 @@ public class MoveActorView extends View {
 
         try {
             intRow = Integer.parseInt(row) - 1;
+            intColumn = Integer.parseInt(column) - 1;
         } catch (NumberFormatException nfe) {
-            System.out.println(nfe.getMessage() + "You must enter a number for the row and column.");
+            this.console.println(nfe.getMessage() + "You must enter a number for the row and column.");
             return false;
         }
 
         Player player = Datingsimulator.getPlayer();
-        Actor actor = Actor.Playerm;
-
+        Actor actor = player.getActor();
+        Location newLocation;
         try {
-            Location newLocation = MapControl.moveActor(actor, Integer.parseInt(row), Integer.parseInt(column));
-        } catch (MapControlException | NumberFormatException mce)
+            newLocation = MapControl.moveActor(actor, intRow, intColumn);
+        } catch (MapControlException mce)
             {
-                System.out.println("Error passed with the exception.");
+                this.console.println("Error passed with the exception.");
                 return false;
             }
 
-            System.out.println("You just went to Walmart. Get your shopping done!");
+            this.console.println(newLocation.getDescription());
             return true;
         }
     }

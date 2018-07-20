@@ -49,29 +49,29 @@ public class HelpMenuView extends View {
             case "Q":
                 return true;
             default:
-                System.out.println("Invaild help menu item.");
+                this.console.println("Invaild help menu item.");
         }
         return false;
 
     }
 
     private void goalOfGame() {
-        System.out.println("Date people and try to get engaged by the end of the game.");
+        this.console.println("Date people and try to get engaged by the end of the game.");
     }
 
     private void move() {
-        System.out.println("Enter coordinates.");
+        this.console.println("Enter coordinates.");
     }
 
     private void initiateConversation() {
-        System.out.println("You need a specific item to talk to people in different areas.");
+        this.console.println("You need a specific item to talk to people in different areas.");
     }
 
     private void date() {
-        System.out.println("Find a date and take them to a date location.");
+        this.console.println("Find a date and take them to a date location.");
     }
 
     private void earnMoney() {
-        System.out.println("Answer questions during work to earn money.");
+        this.console.println("Answer questions during work to earn money.");
     }
 }

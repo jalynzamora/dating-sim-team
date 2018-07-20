@@ -6,6 +6,7 @@
 package byui.cit260.datingSim.view;
 
 import byui.cit260.control.InterestControl;
+import byui.cit260.exception.InterestControlException;
 import static java.lang.Double.parseDouble;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ import java.util.Scanner;
  *
  * @author noahadams
  */
-public class CalcInterestView extends View{
+public class CalcInterestView extends View {
 
     public CalcInterestView() {
     }
@@ -31,19 +32,26 @@ public class CalcInterestView extends View{
         inputs[2] = year;
         return inputs;
     }
-    
+
     @Override
     public boolean doAction(String[] inputs) {
         double principal = 0;
         double rate = 0;
         double years = 0;
         double interest = 0;
-        try { principal = Double.parseDouble(inputs[0]);
-       rate = Double.parseDouble(inputs[1]);
-       years = Double.parseDouble(inputs[2]);
-       interest = InterestControl.calcInterest(principal, rate, years);
-        } catch(NumberFormatException nfe) {
-            System.out.println("ERROR " + nfe.getMessage());
+
+        try {
+            principal = Double.parseDouble(inputs[0]);
+            rate = Double.parseDouble(inputs[1]);
+            years = Double.parseDouble(inputs[2]);
+        } catch (NumberFormatException nfe) {
+            System.out.println(nfe.getMessage());
+        }
+
+        try {
+            interest = InterestControl.calcInterest(principal, rate, years);
+        } catch(InterestControlException ie){
+            System.out.println(ie.getMessage());
         }
 
         if (interest == -1) {
@@ -58,7 +66,7 @@ public class CalcInterestView extends View{
             System.out.println("Invaild amount of years. Please enter a valid value. Try again");
             return false;
         }
-        System.out.println("The interest is $" + interest);
+        this.console.println("The interest is $" + interest);
         return true;
     }
 }

@@ -9,10 +9,20 @@ package byui.cit260.datingSim.view;
  *
  * @author noahadams
  */
-class StartExistingGameView {
+class StartExistingGameView extends View{
 
     void displayStartExistingGameView() {
-        System.out.println("****startExistingGameView was called****");
+        this.console.println("****startExistingGameView was called****");
+    }
+
+    @Override
+    public String[] getInputs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean doAction(String[] inputs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

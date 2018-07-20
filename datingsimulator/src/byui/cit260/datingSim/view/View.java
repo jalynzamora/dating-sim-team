@@ -42,7 +42,7 @@ public abstract class View implements ViewInterface {
     @Override
     public String getInput(String promptMessage) {
         String value = "";
-        System.out.println(promptMessage);
+        this.console.println(promptMessage);
         boolean valid = false;
 try{
         while (valid == false) {
@@ -50,13 +50,13 @@ try{
             value = value.trim();
 
             if (value.length() < 1) {
-                System.out.println("You must enter a non-blank value");
+                this.console.println("You must enter a non-blank value");
                 continue;
             }
             break;
         }
 }catch(Exception e){
-    System.out.println("Error reading input: " + e.getMessage());
+    this.console.println("Error reading input: " + e.getMessage());
 }
         return value;
     }

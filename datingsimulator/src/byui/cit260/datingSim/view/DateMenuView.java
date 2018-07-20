@@ -47,33 +47,33 @@ public class DateMenuView extends View {
             case "Q":
                 return true;
             default:
-                System.out.println("Invaild help menu item.");
+                this.console.println("Invaild help menu item.");
         }
         return false;
 
     }
 
     private void appleBees() {
-        System.out.println("You just went on a date to AppleBee's, it cost $30.");
+        this.console.println("You just went on a date to AppleBee's, it cost $30.");
     }
 
     private void cupBop() {
-        System.out.println("You just went on a date to CupBop Korean BBQ, it cost $20.");
+        this.console.println("You just went on a date to CupBop Korean BBQ, it cost $20.");
     }
 
     private void Freddys() {
-        System.out.println("You just went on a date to Freddy's Steak Burgers, it cost $20.");
+        this.console.println("You just went on a date to Freddy's Steak Burgers, it cost $20.");
     }
 
     private void tacoBell() {
-        System.out.println("You just went on a date to Taco Bell, it cost $10.");
+        this.console.println("You just went on a date to Taco Bell, it cost $10.");
     }
 
     private void mcDonalds() {
-        System.out.println("You just went on a date to McDonald's, it cost $15.");
+        this.console.println("You just went on a date to McDonald's, it cost $15.");
     }
 
     private void dominos() {
-        System.out.println("You just went on a date to Domino's Pizza, it cost $15.");
+        this.console.println("You just went on a date to Domino's Pizza, it cost $15.");
     }
 }

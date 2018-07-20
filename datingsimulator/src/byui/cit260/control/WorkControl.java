@@ -5,18 +5,20 @@
  */
 package byui.cit260.control;
 
+import byui.cit260.exception.WorkControlException;
+
 /**
  *
  * @author jalynzamora
  */
 public class WorkControl {
 
-    public static double calcTotalMoney(double moneyEarned, double bonus) {
+    public static double calcTotalMoney(double moneyEarned, double bonus) throws WorkControlException{
         if (moneyEarned < 50 || moneyEarned > 300) {
-            return -1;
+            throw new WorkControlException("Money Earned must be between 50 to 300."); 
         }
         if (bonus < 0.03 || bonus > 0.06) {
-            return -2;
+            throw new WorkControlException("Bonus must be between 0.03 to 0.06");
         }
         double totalMoney = (moneyEarned+bonus)-0.18*(moneyEarned+bonus);
 

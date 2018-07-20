@@ -40,7 +40,7 @@ public class CalcDateView extends View {
         
         double costDate = CostDateControl.costDate(yourFood, theirFood, tip);
         
-        System.out.println("The cost of the date is: " + costDate);
+        this.console.println("The cost of the date is: " + costDate);
         return true;
 }
 }

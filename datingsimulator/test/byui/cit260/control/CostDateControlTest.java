@@ -5,6 +5,9 @@
  */
 package byui.cit260.control;
 
+import datingsimulator.Datingsimulator;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -13,7 +16,8 @@ import static org.junit.Assert.*;
  * @author noahadams
  */
 public class CostDateControlTest {
-
+protected final BufferedReader keyboard = Datingsimulator.getInFile();
+    protected final PrintWriter console = Datingsimulator.getOutFile();
     public CostDateControlTest() {
     }
 
@@ -23,7 +27,7 @@ public class CostDateControlTest {
     @Test
     public void testCostDate() {
 
-        System.out.println("Test 1");
+        this.console.println("Test 1");
         double yourFood = 15;
         double theirFood = 15;
         double tipPercent = 0.15;
@@ -32,7 +36,7 @@ public class CostDateControlTest {
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
 
-        System.out.println("Test 2");
+        this.console.println("Test 2");
         yourFood = 5;
         theirFood = 15;
         tipPercent = 0.15;
@@ -41,7 +45,7 @@ public class CostDateControlTest {
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
 
-        System.out.println("Test 3");
+        this.console.println("Test 3");
         yourFood = 30;
         theirFood = 15;
         tipPercent = 0.15;
@@ -50,7 +54,7 @@ public class CostDateControlTest {
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
 
-        System.out.println("Test 4");
+        this.console.println("Test 4");
         yourFood = 15;
         theirFood = 5;
         tipPercent = 0.15;
@@ -59,7 +63,7 @@ public class CostDateControlTest {
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
 
-        System.out.println("Test 5");
+        this.console.println("Test 5");
         yourFood = 15;
         theirFood = 30;
         tipPercent = 0.15;
@@ -68,7 +72,7 @@ public class CostDateControlTest {
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
 
-        System.out.println("Test 6");
+        this.console.println("Test 6");
         yourFood = 15;
         theirFood = 15;
         tipPercent = 0.05;
@@ -77,7 +81,7 @@ public class CostDateControlTest {
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
 
-        System.out.println("Test 7");
+        this.console.println("Test 7");
         yourFood = 15;
         theirFood = 15;
         tipPercent = 0.25;
@@ -86,7 +90,7 @@ public class CostDateControlTest {
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
 
-        System.out.println("Test 8");
+        this.console.println("Test 8");
         yourFood = 10;
         theirFood = 10;
         tipPercent = 0.1;
@@ -95,7 +99,7 @@ public class CostDateControlTest {
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
 
-        System.out.println("Test 9");
+        this.console.println("Test 9");
         yourFood = 25;
         theirFood = 25;
         tipPercent = 0.2;

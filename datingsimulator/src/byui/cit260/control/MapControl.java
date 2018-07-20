@@ -117,8 +117,8 @@ public class MapControl {
         Map map = game.getMap();
         Location[][] locations = map.getLocations();
 
-        if (newRow < 1 || newRow > map.getRowCount()
-                || newColumn < 1 || newColumn > map.getColumnCount()) {
+        if (newRow < 0 || newRow > map.getRowCount()
+                || newColumn < 0 || newColumn > map.getColumnCount()) {
             throw new MapControlException("Enter something valid.");
         }
 
@@ -126,10 +126,10 @@ public class MapControl {
         int currentColumn = actor.getCoordinates().x;
         Location oldLocation = locations[currentRow][currentColumn];
 
-        Location newLocation = locations[newRow][newColumn];
+        actor.getCoordinates().setLocation(newColumn, newRow);
+        
+        Location newLocation = locations[newColumn][newRow];
 
-        newRow = actor.getCoordinates().y;
-        newColumn = actor.getCoordinates().x;
 
         return newLocation;
 
