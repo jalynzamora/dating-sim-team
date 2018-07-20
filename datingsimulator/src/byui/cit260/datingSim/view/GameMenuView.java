@@ -112,7 +112,8 @@ public class GameMenuView extends View {
     }
 
     private void saveGame() {
-
+        SaveGameView saveGameView = new SaveGameView();
+        saveGameView.display();
     }
 
     private void openDateLocation() {

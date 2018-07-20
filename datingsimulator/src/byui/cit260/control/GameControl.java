@@ -17,7 +17,9 @@ import byui.cit260.model.Player;
 import byui.cit260.model.Question;
 import byui.cit260.model.QuestionType;
 import datingsimulator.Datingsimulator;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
@@ -28,7 +30,7 @@ public class GameControl {
 
     public static Player savePlayer(String playerName) {
         if (playerName == null || playerName.length() < 1) {
-           return null;
+            return null;
         }
         Player player = new Player();
         player.setName(playerName);
@@ -48,10 +50,9 @@ public class GameControl {
 
         InventoryItem[] inventoryList = createItems();
         game.setInventory(inventoryList);
-        
+
         Question[] questions = createQuestions();
         game.setQuestions(questions);
-        
 
         Map map = MapControl.createMap(game, 5, 5);
 
@@ -59,9 +60,7 @@ public class GameControl {
             return -2;
         }
         game.setMap(map);
-        
-        
-        
+
         return 1;
     }
 
@@ -99,21 +98,21 @@ public class GameControl {
         work.setRequired(true);
         work.setNumPoints(10);
         questions[QuestionType.work.ordinal()] = relationship;
-        
+
         Question gym = new Question();
         gym.setQuestion("Do you even lift?");
         gym.setAnswer("");
         gym.setRequired(false);
         gym.setNumPoints(10);
         questions[QuestionType.gym.ordinal()] = relationship;
-        
+
         Question proposal = new Question();
         proposal.setQuestion("Sooooo, you're gonna marry me, right?");
         proposal.setAnswer("");
         proposal.setRequired(true);
         proposal.setNumPoints(10);
         questions[QuestionType.proposal.ordinal()] = relationship;
-        
+
         return questions;
     }
 
@@ -127,5 +126,32 @@ public class GameControl {
         }
     }
 
+    public static Game getGame(String filePath) throws GameControlException {
+        if (filePath == null) {
+            throw new GameControlException("Invalid file path");
+        }
+        Game game = null;
+        try (FileInputStream fips = new FileInputStream(filePath)) {
+            ObjectInputStream input = new ObjectInputStream(fips);
+
+            game = (Game) input.readObject();
+            Datingsimulator.setCurrentGame(game);
+            Datingsimulator.setPlayer(game.getPlayer());
+        } catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        return game;
+    }
+
+    public static void getSavedGame(String filePath) throws GameControlException {
+        Game game = null;
+        try (FileInputStream fips = new FileInputStream(filePath)) {
+            ObjectInputStream input = new ObjectInputStream(fips);
+            game = (Game) input.readObject();
+        } catch (Exception ie) {
+            throw new GameControlException(ie.getMessage());
+        }
+        Datingsimulator.setCurrentGame(game);
+    }
 
 }

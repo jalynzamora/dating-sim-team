@@ -23,7 +23,7 @@ public class MainMenuView extends View {
     @Override
     public String[] getInputs() {
         String[] inputs = new String[1];
-        String menu = this.getInput("N - New game\n" + "R - Restart game\n" + "H - Get help\n" + "Q - Quit");
+        String menu = this.getInput("N - New game\n" + "R - Restart game\n" + "S - Start saved game\n" + "H - Get help\n" + "Q - Quit");
         inputs[0] = menu;
 
         return inputs;
@@ -47,13 +47,17 @@ public class MainMenuView extends View {
             case "R":
                 this.restartGame();
                 break;
+            case "S":
+                this.startSavedGame();
+                break;
             case "H":
                 this.getHelp();
                 break;
             case "Q":
                 return true;
             default:
-                this.console.println("Invaild menu item.");
+                ErrorView.display(this.getClass().getName(), "Invaild selection, Try again");
+                break;
         }
         return false;
     }
@@ -75,5 +79,9 @@ public class MainMenuView extends View {
     private void restartGame() {
         StartExistingGameView startExistingGameView = new StartExistingGameView();
         startExistingGameView.displayStartExistingGameView();
+    }
+
+    private void startSavedGame() {
+        System.out.println("method called");
     }
 }
