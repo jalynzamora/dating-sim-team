@@ -39,7 +39,7 @@ public class ReportListOfActorsView extends View {
             out.println("\n\n             List of Actors Report           ");
             out.println("%-12s %-25s", "Name", "Location");
             
-            for (Actor : actors) {
+            for (Actor actor: actors) {
                 out.println(String.format(actors.getName(), actors.getCoordinates());
             }
 
